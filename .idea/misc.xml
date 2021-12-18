@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_otp_verification.xml" value="0.1" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/drawable/edittext_background.xml" value="0.5" />
+        <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/drawable/ic_back_arrow.xml" value="0.17094017094017094" />
+        <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.17094017094017094" />
+        <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/drawable/ic_outline_email_24.xml" value="0.17094017094017094" />
+        <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/drawable/rounded_sign_in.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/drawable/rounded_sign_up.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/layout/activity_login.xml" value="0.16" />
+        <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/layout/activity_main.xml" value="0.15" />
+        <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/layout/activity_otp_verification.xml" value="0.1576923076923077" />
+        <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/layout/activity_signup.xml" value="0.1576923076923077" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
