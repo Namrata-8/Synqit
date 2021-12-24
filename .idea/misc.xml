@@ -3,10 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_login.xml" value="0.152" />
-        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_main.xml" value="0.10400000000000001" />
-        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_otp_verification.xml" value="0.1" />
-        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/edittext_background.xml" value="0.21944444444444444" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/ic_back_arrow.xml" value="0.21944444444444444" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_main.xml" value="0.128" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_on_boarding.xml" value="0.2" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_otp_verification.xml" value="0.2" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_register.xml" value="0.16799999999999998" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_register_as.xml" value="0.176" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_signup.xml" value="0.1" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/slide_item_container.xml" value="0.12" />
         <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/drawable/edittext_background.xml" value="0.5" />
         <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/drawable/ic_back_arrow.xml" value="0.17094017094017094" />
         <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.17094017094017094" />

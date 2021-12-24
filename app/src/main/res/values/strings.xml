@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Synqit</string>
+
+    <string name="on_boarding_1">SYNQIT is your Digital Business Card</string>
+    <string name="on_boarding_2">Share your contact info &amp; more instantly</string>
+    <string name="on_boarding_3">SYNQIT Direct allows you to share any 1 link of your choice</string>
 </resources>
