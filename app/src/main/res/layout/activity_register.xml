@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="?attr/main_background"
     tools:context=".UI.RegisterActivity">
 
     <RelativeLayout
@@ -25,7 +25,8 @@
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="25dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_arrow_left" />
+            android:src="@drawable/ic_arrow_left"
+            app:tint="?attr/icon_color" />
 
     </RelativeLayout>
 
@@ -35,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="Welcome"
-        android:textColor="@color/black"
+        android:textColor="?attr/text_color"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -67,7 +68,7 @@
             android:layout_centerVertical="true"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_outline_email_24"
-            app:tint="@color/black" />
+            app:tint="?attr/icon_color" />
 
         <TextView
             android:id="@+id/tvMail"
@@ -76,7 +77,8 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
             android:layout_toRightOf="@id/ibMail"
-            android:text="Email" />
+            android:text="Email"
+            android:textColor="?attr/hint_text_color" />
 
         <EditText
             android:layout_width="match_parent"
@@ -84,10 +86,12 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:layout_toRightOf="@id/tvMail"
-            android:hint="Demo@gmail.com"
             android:background="@android:color/transparent"
+            android:hint="Demo@gmail.com"
+            android:padding="10dp"
             android:textAlignment="textEnd"
-            android:textColor="@color/black"
+            android:textColor="?attr/text_color"
+            android:textColorHint="?attr/hint_text_color"
             android:textSize="14sp" />
 
     </RelativeLayout>
@@ -117,7 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_centerInParent="true"
-                android:background="@android:color/darker_gray" />
+                android:background="@color/bg_view" />
 
         </RelativeLayout>
 
@@ -134,7 +138,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Or" />
+                android:text="Or"
+                android:textColor="?attr/text_color_light" />
 
         </RelativeLayout>
 
@@ -151,7 +156,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_centerInParent="true"
-                android:background="@android:color/darker_gray" />
+                android:background="@color/bg_view" />
 
         </RelativeLayout>
 
@@ -162,7 +167,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/edittext_background"
-        android:padding="8dp"
+        android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -176,11 +181,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:background="@drawable/edittext_background"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/bg_country_code_picker"
             android:gravity="center_vertical"
             android:padding="3dp"
-            app:ccpDialog_textColor="@color/white"
+            app:ccpDialog_searchEditTextTint="?attr/text_color"
+            app:ccpDialog_textColor="?attr/text_color"
             app:ccp_autoDetectCountry="false"
             app:ccp_countryAutoDetectionPref="LOCALE_NETWORK_SIM"
             app:ccp_defaultPhoneCode="91"
@@ -197,8 +202,10 @@
             android:layout_toRightOf="@id/countryCodePicker"
             android:background="@android:color/transparent"
             android:hint="Mobile Number"
+            android:padding="10dp"
             android:textAlignment="textStart"
-            android:textColor="@color/black"
+            android:textColor="?attr/text_color"
+            android:textColorHint="?attr/hint_text_color"
             android:textSize="14sp" />
 
     </RelativeLayout>
@@ -224,7 +231,7 @@
             android:layout_centerVertical="true"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_outline_lock_24"
-            app:tint="@color/black" />
+            app:tint="?attr/icon_color" />
 
         <EditText
             android:id="@+id/etPassword"
@@ -237,8 +244,10 @@
             android:layout_toRightOf="@id/ibPassword"
             android:background="@android:color/transparent"
             android:hint="Password"
+            android:padding="10dp"
             android:textAlignment="textStart"
-            android:textColor="@color/black"
+            android:textColor="?attr/text_color"
+            android:textColorHint="?attr/hint_text_color"
             android:textSize="14sp" />
 
         <ImageButton
@@ -249,7 +258,7 @@
             android:layout_centerVertical="true"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_see_hide_pswrd"
-            app:tint="@color/black" />
+            app:tint="?attr/icon_color" />
 
     </RelativeLayout>
 
@@ -270,12 +279,12 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="?attr/button_color"
         app:cornerRadius="35dp"
         android:text="Sign up"
-        android:textColor="@color/white"
+        android:textColor="?attr/btn_text_color"
         android:textAllCaps="false"
-        android:id="@+id/btnSignin"
+        android:id="@+id/btnSignup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -290,12 +299,12 @@
         android:layout_height="wrap_content"
         android:text="Already have an account?"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="?attr/text_color"
         app:layout_constraintVertical_bias="0"
         android:layout_marginTop="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnSignin"
-        app:layout_constraintStart_toStartOf="@+id/btnSignin"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignin" />
+        app:layout_constraintEnd_toEndOf="@+id/btnSignup"
+        app:layout_constraintStart_toStartOf="@+id/btnSignup"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

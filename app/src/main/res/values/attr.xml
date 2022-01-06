@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="main_background" format="color"/>
+    <attr name="bg_edittext" format="color"/>
+    <attr name="bg_edittext_border" format="color"/>
+    <attr name="text_color" format="color"/>
+    <attr name="hint_text_color" format="color"/>
+    <attr name="icon_color" format="color"/>
+    <attr name="button_color" format="color"/>
+    <attr name="text_color_light" format="color"/>
+    <attr name="bg_pin_view" format="color"/>
+    <attr name="bg_pin_view_border" format="color"/>
+    <attr name="bg_card" format="color"/>
+    <attr name="bg_card_border" format="color"/>
+    <attr name="bg_bottom_sheet" format="color"/>
+    <attr name="bg_add_link" format="color"/>
+    <attr name="bg_influencers" format="color"/>
+    <attr name="btn_text_color" format="color"/>
+    <attr name="btn_card_select_color" format="color"/>
+    <attr name="bg_pro_circle_color" format="color"/>
+    <attr name="bg_pro_circle_border_color" format="color"/>
+    <attr name="bg_register_as_selected_card_border" format="color"/>
+    <attr name="bg_register_as_unselected_card_border" format="color"/>
+    <attr name="bg_register_as_selected_card" format="color"/>
+    <attr name="bg_register_as_unselected_card" format="color"/>
+    <attr name="bg_border_country_gender" format="color"/>
+    <attr name="bg_dotted_circle" format="color"/>
+    <attr name="text_color_your_logo" format="color"/>
+    <attr name="bg_dotted_rectangle" format="color"/>
+    <attr name="bg_discount_selected_pro_page" format="color"/>
+    <attr name="bg_discount_unselected_pro_page" format="color"/>
+    <attr name="bg_discount_unselected_pro_page_border" format="color"/>
+    <attr name="bg_register_as_selected_card_border_pro_page" format="color"/>
+    <attr name="bg_register_as_selected_card_pro_page" format="color"/>
+    <attr name="bg_register_as_unselected_card_border_pro_page" format="color"/>
+    <attr name="bg_register_as_unselected_card_pro_page" format="color"/>
+
+</resources>

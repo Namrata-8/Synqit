@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/main_background"
+    tools:context=".Fragments.BusinessFragment4">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:overScrollMode="never">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/coordinatorLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0">
+
+                <RelativeLayout
+                    android:id="@+id/relativeImageView"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_margin="25dp"
+                    android:background="@drawable/bg_dotted_circle">
+
+                    <com.example.synqit.customeviews.TextViewBold
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="Your logo"
+                        android:textColor="?attr/text_color_your_logo"
+                        android:textSize="16sp" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/on_boarding_1"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/button_color"
+                    android:src="@drawable/ic_add"
+                    app:borderWidth="0dp"
+                    app:layout_anchor="@id/relativeImageView"
+                    app:layout_anchorGravity="center_horizontal|bottom"
+                    app:tint="?attr/main_background" />
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+            <com.example.synqit.customeviews.TextViewRegular
+                android:id="@+id/textViewRegular2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="tap to upload logo"
+                android:textColor="?attr/text_color_light"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/coordinatorLayout"
+                app:layout_constraintStart_toStartOf="@+id/coordinatorLayout"
+                app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout"
+                app:layout_constraintVertical_bias="0" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="75dp"
+                app:cardCornerRadius="25dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRegular2"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.75">
+
+                <RelativeLayout
+                    android:id="@+id/rlCoverPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:background="@drawable/bg_dotted_rectangle">
+
+                    <ImageView
+                        android:id="@+id/ivUploadCoverPhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <com.example.synqit.customeviews.TextViewSemiBold
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="Tap to upload cover photo \n (optional)"
+                        android:textAlignment="center"
+                        android:textColor="?attr/text_color"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFinish"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="50dp"
+                android:backgroundTint="?attr/button_color"
+                android:elevation="20dp"
+                android:outlineAmbientShadowColor="#9C60FF"
+                android:outlineSpotShadowColor="#9C60FF"
+                android:shadowColor="#9C60FF"
+                android:text="Finish"
+                android:textAllCaps="false"
+                android:textColor="?attr/btn_text_color"
+                app:cornerRadius="35dp"
+                app:elevation="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.75" />
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:id="@+id/tvSkipNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="40dp"
+                android:text="Skip Now"
+                android:textColor="?attr/text_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnFinish"
+                app:layout_constraintVertical_bias="0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</FrameLayout>

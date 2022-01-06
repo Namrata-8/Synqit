@@ -10,8 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Synqit">
         <activity
+            android:name=".UI.DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.ProUpgradeActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.OnBoardingActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,11 +39,14 @@
         <activity
             android:name=".UI.MainActivity"
             android:exported="true">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
     </application>
 

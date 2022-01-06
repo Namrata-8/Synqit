@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="?attr/main_background"
     tools:context=".UI.OtpVerificationActivity">
 
     <RelativeLayout
@@ -19,9 +19,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_margin="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_arrow_left" />
+            android:src="@drawable/ic_arrow_left"
+            app:tint="?attr/icon_color"/>
 
     </RelativeLayout>
 
@@ -31,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="OTP Verification"
-        android:textColor="@color/black"
+        android:textColor="?attr/text_color"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -77,6 +81,7 @@
         android:layout_marginTop="45dp"
         android:text="Your verfication code : "
         android:textSize="13sp"
+        android:textColor="?attr/text_color_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -90,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         android:text="3.12"
-        android:textColor="@color/black"
+        android:textColor="?attr/text_color"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         android:text="Resend"
-        android:textColor="@color/black"
+        android:textColor="?attr/text_color"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/firstPinView"
@@ -112,5 +117,22 @@
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/firstPinView"
         app:layout_constraintVertical_bias="0" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnVerify"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:backgroundTint="?attr/button_color"
+        android:text="Verify"
+        android:textAllCaps="false"
+        android:textColor="?attr/btn_text_color"
+        app:cornerRadius="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginTop="50dp"
+        app:layout_constraintWidth_percent="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

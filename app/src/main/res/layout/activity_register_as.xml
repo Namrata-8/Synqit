@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".UI.RegisterActivity">
+    android:background="?attr/main_background"
+    tools:context=".UI.RegisterAsActivity">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -16,24 +16,65 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
+            android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_margin="25dp"
+            android:layout_marginStart="25dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_arrow_left" />
+            android:src="@drawable/ic_arrow_left"
+            app:tint="?attr/icon_color" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/ProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="25dp"
+            android:progress="25"
+            android:layout_marginVertical="10dp"
+            android:layout_centerVertical="true"
+            app:indicatorColor="?attr/text_color"
+            app:indicatorSize="50dp"
+            app:trackColor="@color/grey_300"
+            app:trackCornerRadius="5dp"
+            app:trackThickness="3dp" />
+
+        <com.example.synqit.customeviews.TextViewRegular
+            android:id="@+id/tvSteps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ProgressIndicator"
+            android:layout_alignTop="@+id/ProgressIndicator"
+            android:layout_alignEnd="@+id/ProgressIndicator"
+            android:layout_alignBottom="@+id/ProgressIndicator"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="1/4"
+            android:textColor="?attr/text_color"
+            android:textSize="15sp" />
+
+        <com.example.synqit.customeviews.TextViewRegular
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:layout_toStartOf="@+id/ProgressIndicator"
+            android:gravity="center"
+            android:text="Steps"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
-    <TextView
+    <com.example.synqit.customeviews.TextViewBold
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:text="Register as"
-        android:textColor="@color/black"
+        android:textColor="?attr/text_color"
         android:textSize="30dp"
-        android:textStyle="bold"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -41,5 +82,30 @@
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent="0.75" />
+
+    <com.example.synqit.customeviews.TextViewRegular
+        android:id="@+id/tvBusinessAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Business account"
+        android:textColor="?attr/text_color"
+        android:textSize="25dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintWidth_percent="0.75" />
+
+    <com.example.synqit.customeviews.CustomViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBusinessAccount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

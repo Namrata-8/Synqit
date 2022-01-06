@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/relativeLayout15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivCheckIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_above="@id/cardBusiness"
+            android:layout_alignEnd="@+id/cardBusiness"
+            android:background="@drawable/ic_check_circle"
+            android:elevation="12.1dp"
+            android:gravity="center"
+            android:textColor="?attr/text_color"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_anchor="@id/cardIndividual"
+            app:layout_anchorGravity="end|bottom"
+            app:tint="?attr/icon_color" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardIndividual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="15dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="12dp">
+
+            <RelativeLayout
+                android:id="@+id/rlCardIndividual"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:background="@drawable/bg_corner_unselected_card">
+
+                <ImageView
+                    android:id="@+id/ivIconBusiness"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_individual"
+                    app:tint="?attr/icon_color" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.example.synqit.customeviews.TextViewRegular
+        android:id="@+id/tvNameBusiness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Individual"
+        android:textColor="?attr/text_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/relativeLayout15"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout15"
+        app:layout_constraintTop_toBottomOf="@id/relativeLayout15" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

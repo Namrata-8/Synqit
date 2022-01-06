@@ -3,15 +3,50 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable-v24/bg_discount_unselected.xml" value="0.10092592592592593" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable-xxxhdpi/bg_corner_un_selected_card.xml" value="0.1" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/bg_bottom_sheet.xml" value="0.1" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/bg_corner_selected_card.xml" value="0.21944444444444444" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/bg_corner_selected_card_pro.xml" value="0.10092592592592593" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/bg_corner_unselected_card.xml" value="0.1" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/bg_corner_unselected_card_pro.xml" value="0.10092592592592593" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/bg_country_code_picker.xml" value="0.24027777777777778" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/bg_country_gender_card.xml" value="0.1" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/bg_country_gender_selected_card.xml" value="0.1" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/bg_discount_selected.xml" value="0.10092592592592593" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/bg_discount_unselected.xml" value="0.10092592592592593" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/bg_dotted_circle.xml" value="0.12" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/bg_dotted_rectangle.xml" value="0.4" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/circle.xml" value="0.1" />
         <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/edittext_background.xml" value="0.21944444444444444" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/ic_arrow_left.xml" value="0.21944444444444444" />
         <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/ic_back_arrow.xml" value="0.21944444444444444" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/ic_business.xml" value="0.1" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/ic_check.xml" value="0.10092592592592593" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/ic_check_circle.xml" value="0.21944444444444444" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/ic_individual.xml" value="0.1" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/ic_outline_email_24.xml" value="0.21944444444444444" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/ic_pic_individual.xml" value="0.21944444444444444" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/drawable/ic_yes_circle.xml" value="0.1" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_dashboard.xml" value="0.4" />
         <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_main.xml" value="0.128" />
         <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_on_boarding.xml" value="0.2" />
         <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_otp_verification.xml" value="0.2" />
-        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_register.xml" value="0.16799999999999998" />
-        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_register_as.xml" value="0.176" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_pro_upgrade.xml" value="0.2" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_register_as.xml" value="0.152" />
         <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/activity_signup.xml" value="0.1" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/bottom_sheet_country.xml" value="0.152" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/bottom_sheet_gender.xml" value="0.2" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/fragment_business1.xml" value="0.14492753623188406" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/fragment_business2.xml" value="0.2" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/fragment_business3.xml" value="0.2" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/fragment_business4.xml" value="0.152" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/fragment_individual2.xml" value="0.14492753623188406" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/fragment_individual3.xml" value="0.176" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/item_business_card.xml" value="0.264" />
+        <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/item_country_gender.xml" value="0.152" />
         <entry key="..\:/Freelancer/Synqit/Synqit/app/src/main/res/layout/slide_item_container.xml" value="0.12" />
         <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/drawable/edittext_background.xml" value="0.5" />
         <entry key="..\:/Users/BOBBY/AndroidStudioProjects/Synqit/app/src/main/res/drawable/ic_back_arrow.xml" value="0.17094017094017094" />

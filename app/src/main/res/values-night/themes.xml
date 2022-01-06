@@ -2,15 +2,56 @@
     <!-- Base application theme. -->
     <style name="Theme.Synqit" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:forceDarkAllowed" tools:ignore="NewApi">true</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
         <!-- Customize your theme here. -->
+
+        <item name="main_background">@color/black</item>
+        <item name="bg_edittext">#00000000</item>
+        <item name="bg_edittext_border">#4B4A51</item>
+        <item name="text_color">@color/white</item>
+        <item name="hint_text_color">#80FFFFFF</item>
+        <item name="icon_color">@color/white</item>
+        <item name="button_color">@color/white</item>
+        <item name="text_color_light">@color/white</item>
+        <item name="bg_pin_view">#18171D</item>
+        <item name="bg_pin_view_border">#4B4A51</item>
+        <item name="bg_card">#18171D</item>
+        <item name="bg_card_border">#4B4A51</item>
+        <item name="bg_bottom_sheet">#18171D</item>
+        <item name="bg_add_link">#18171D</item>
+        <item name="bg_influencers">@color/black</item>
+        <item name="btn_text_color">@color/black</item>
+        <item name="bg_pro_circle_color">#FB6C05</item>
+        <item name="bg_pro_circle_border_color">#FB6C05</item>
+        <item name="bg_register_as_selected_card_border">#18171D</item>
+        <item name="bg_register_as_unselected_card_border">#4B4A51</item>
+        <item name="bg_register_as_selected_card">#18171D</item>
+        <item name="bg_register_as_unselected_card">@color/black</item>
+        <item name="bg_border_country_gender">#4B4A51</item>
+        <item name="bg_dotted_circle">#4B4A51</item>
+        <item name="text_color_your_logo">#BFFFFFFF</item>
+        <item name="bg_dotted_rectangle">#18171D</item>
+        <item name="bg_discount_selected_pro_page">#FB6C05</item>
+        <item name="bg_discount_unselected_pro_page">#14FFFFFF</item>
+        <item name="bg_discount_unselected_pro_page_border">#4B4A51</item>
+        <item name="bg_register_as_selected_card_border_pro_page">@color/white</item>
+        <item name="bg_register_as_selected_card_pro_page">@color/black</item>
+        <item name="bg_register_as_unselected_card_border_pro_page">#4B4A51</item>
+        <item name="bg_register_as_unselected_card_pro_page">@color/black</item>
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
     </style>
 </resources>

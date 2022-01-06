@@ -23,7 +23,7 @@
         app:layout_constraintWidth_percent="0.5"
         android:layout_height="wrap_content"
         android:text="Title"
-        android:textColor="@color/black"
+        android:textColor="?attr/text_color"
         android:textAlignment="center"
         android:id="@+id/tvOnBoardTitle"
         app:layout_constraintStart_toStartOf="parent"
