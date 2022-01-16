@@ -14,6 +14,7 @@
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <!-- Customize your theme here. -->
+        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
 
         <item name="main_background">@color/white</item>
         <item name="bg_edittext">#F5F7FB</item>
@@ -48,6 +49,22 @@
         <item name="bg_register_as_selected_card_pro_page">@color/white</item>
         <item name="bg_register_as_unselected_card_border_pro_page">#409A95A7</item>
         <item name="bg_register_as_unselected_card_pro_page">@color/white</item>
+        <item name="bg_text_private">#F1F1F1</item>
+        <item name="switch_unchecked">#DBDEE5</item>
+        <item name="btn_add_link_border">@color/white</item>
+        <item name="btn_add_link">#F1F1F1</item>
+        <item name="bg_search_et_border">#DBDEE5</item>
+        <item name="bg_search_et">#F5F7FB</item>
+        <item name="row_influencers_border">#ECECEC</item>
+        <item name="bg_tv_link_border">#FAFAFA</item>
+        <item name="bg_tv_link">@color/white</item>
+    </style>
+
+    <style name="AppTheme_Crop" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/black</item>
+        <!--<item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>-->
     </style>
 
     <style name="DialogAnimation">

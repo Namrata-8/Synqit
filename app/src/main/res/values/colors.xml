@@ -21,4 +21,5 @@
     <color name="dark_hint_color">#ffffff</color>
     <color name="dark_border_color">#4B4A51</color>
     <color name="dark_pin_box_color">#18171D</color>
+    <color name="orange">#FB6C05</color>
 </resources>

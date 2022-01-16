@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="?attr/main_background"
-    tools:context=".Fragments.IndividualFragment2">
+    tools:context=".fragments.individualfragment2.IndividualFragment2">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.fragments.individualfragment2.Individual2ViewModel" />
+
+    </data>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,7 +23,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="?attr/main_background">
 
             <RelativeLayout
                 android:id="@+id/relativeLayout2"
@@ -41,27 +49,18 @@
                     android:src="@drawable/ic_company"
                     app:tint="?attr/icon_color" />
 
-                <com.example.synqit.customeviews.TextViewRegular
-                    android:id="@+id/tvMail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_toRightOf="@id/ibMail"
-                    android:text="Company name"
-                    android:textColor="?attr/hint_text_color" />
-
                 <EditText
                     android:id="@+id/etCompName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:layout_toRightOf="@id/tvMail"
+                    android:layout_toRightOf="@id/ibMail"
                     android:background="@android:color/transparent"
-                    android:hint="Demo"
+                    android:hint="Company name"
+                    android:singleLine="true"
                     android:padding="10dp"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="textStart"
                     android:textColor="?attr/text_color"
                     android:textColorHint="?attr/hint_text_color"
                     android:textSize="14sp" />
@@ -106,27 +105,18 @@
                     android:src="@drawable/ic_full_name"
                     app:tint="?attr/icon_color" />
 
-                <com.example.synqit.customeviews.TextViewRegular
-                    android:id="@+id/tvFullName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_toRightOf="@id/ibFullName"
-                    android:text="Enter Full name"
-                    android:textColor="?attr/hint_text_color" />
-
                 <EditText
                     android:id="@+id/etFullName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:layout_toRightOf="@id/tvFullName"
+                    android:layout_toRightOf="@id/ibFullName"
                     android:background="@android:color/transparent"
-                    android:hint="John doe"
+                    android:hint="Full name"
                     android:padding="10dp"
-                    android:textAlignment="textEnd"
+                    android:singleLine="true"
+                    android:textAlignment="textStart"
                     android:textColor="?attr/text_color"
                     android:textColorHint="?attr/hint_text_color"
                     android:textSize="14sp" />
@@ -156,30 +146,21 @@
                     android:src="@drawable/ic_calender"
                     app:tint="?attr/icon_color" />
 
-                <com.example.synqit.customeviews.TextViewRegular
-                    android:id="@+id/tvDob"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_toRightOf="@id/ibDob"
-                    android:text="Date of birth"
-                    android:textColor="?attr/hint_text_color" />
-
                 <EditText
                     android:id="@+id/etDob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:layout_toRightOf="@id/tvDob"
+                    android:layout_toRightOf="@id/ibDob"
                     android:background="@android:color/transparent"
                     android:clickable="true"
                     android:editable="false"
                     android:focusable="false"
+                    android:onClick="@{() -> viewModel.onDateClick()}"
                     android:hint="mm/dd/yyyy"
                     android:padding="10dp"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="textStart"
                     android:textColor="?attr/text_color"
                     android:textColorHint="?attr/hint_text_color"
                     android:textSize="14sp"
@@ -210,30 +191,21 @@
                     android:src="@drawable/ic_location"
                     app:tint="?attr/icon_color" />
 
-                <com.example.synqit.customeviews.TextViewRegular
-                    android:id="@+id/tvCountry"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_toRightOf="@id/ibCountry"
-                    android:text="Country"
-                    android:textColor="?attr/hint_text_color" />
-
                 <EditText
                     android:id="@+id/etCountry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:layout_toRightOf="@id/tvCountry"
+                    android:layout_toRightOf="@id/ibCountry"
                     android:background="@android:color/transparent"
                     android:clickable="true"
                     android:editable="false"
                     android:focusable="false"
-                    android:hint="india"
+                    android:hint="Country"
+                    android:onClick="@{() -> viewModel.onCountryClick()}"
                     android:padding="10dp"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="textStart"
                     android:textColor="?attr/text_color"
                     android:textColorHint="?attr/hint_text_color"
                     android:textSize="14sp"
@@ -264,30 +236,22 @@
                     android:src="@drawable/ic_gender"
                     app:tint="?attr/icon_color" />
 
-                <com.example.synqit.customeviews.TextViewRegular
-                    android:id="@+id/tvGender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_toRightOf="@id/ibGender"
-                    android:text="Country"
-                    android:textColor="?attr/hint_text_color" />
-
                 <EditText
                     android:id="@+id/etGender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:layout_toRightOf="@id/tvGender"
+                    android:layout_toRightOf="@id/ibGender"
                     android:background="@android:color/transparent"
                     android:clickable="true"
                     android:drawableEnd="@drawable/ic_arrow_down"
                     android:editable="false"
                     android:focusable="false"
+                    android:hint="Gender"
+                    android:onClick="@{() -> viewModel.onGenderClick()}"
                     android:padding="10dp"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="textStart"
                     android:textColor="?attr/text_color"
                     android:textColorHint="?attr/hint_text_color"
                     android:textSize="14sp"
@@ -302,6 +266,7 @@
                 android:layout_marginVertical="75dp"
                 android:backgroundTint="?attr/button_color"
                 android:text="Continue"
+                android:onClick="@{() -> viewModel.onContinueClick()}"
                 android:textAllCaps="false"
                 android:textColor="?attr/btn_text_color"
                 app:cornerRadius="35dp"
@@ -316,4 +281,4 @@
 
     </ScrollView>
 
-</FrameLayout>
+</layout>

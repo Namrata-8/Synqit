@@ -34,5 +34,14 @@
     <attr name="bg_register_as_selected_card_pro_page" format="color"/>
     <attr name="bg_register_as_unselected_card_border_pro_page" format="color"/>
     <attr name="bg_register_as_unselected_card_pro_page" format="color"/>
+    <attr name="bg_text_private" format="color"/>
+    <attr name="switch_unchecked" format="color"/>
+    <attr name="btn_add_link_border" format="color"/>
+    <attr name="btn_add_link" format="color"/>
+    <attr name="bg_search_et_border" format="color"/>
+    <attr name="bg_search_et" format="color"/>
+    <attr name="row_influencers_border" format="color"/>
+    <attr name="bg_tv_link_border" format="color"/>
+    <attr name="bg_tv_link" format="color"/>
 
 </resources>

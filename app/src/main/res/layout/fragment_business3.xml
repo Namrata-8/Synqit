@@ -1,211 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="?attr/main_background"
-    tools:context=".Fragments.BusinessFragment3">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.businessfragment3.BusinessFragment3">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.fragments.businessfragment3.BusinessFragment3ViewModel" />
+
+    </data>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:scrollbars="none"
-        android:overScrollMode="never">
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/main_background">
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/edittext_background"
-            android:padding="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintWidth_percent="0.75">
-
-            <ImageButton
-                android:id="@+id/ibMail"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_company"
-                app:tint="?attr/icon_color" />
+                android:layout_marginTop="25dp"
+                android:background="@drawable/edittext_background"
+                android:padding="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.75">
+
+                <ImageButton
+                    android:id="@+id/ibMail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_company"
+                    app:tint="?attr/icon_color" />
+
+                <EditText
+                    android:id="@+id/etCompName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@id/ibMail"
+                    android:background="@android:color/transparent"
+                    android:hint="Demo"
+                    android:padding="10dp"
+                    android:textAlignment="textStart"
+                    android:singleLine="true"
+                    android:textColor="?attr/text_color"
+                    android:textColorHint="?attr/hint_text_color"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
 
             <com.example.synqit.customeviews.TextViewRegular
-                android:id="@+id/tvMail"
+                android:id="@+id/tvText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="15dp"
-                android:layout_toRightOf="@id/ibMail"
-                android:text="Company name"
-                android:textColor="?attr/hint_text_color" />
+                android:layout_marginTop="15dp"
+                android:text="Company name will be your profile name"
+                android:textAlignment="center"
+                android:textColor="?attr/hint_text_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/relativeLayout2"
+                app:layout_constraintStart_toStartOf="@+id/relativeLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+                app:layout_constraintVertical_bias="0" />
 
-            <EditText
-                android:id="@+id/etCompName"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/relativeLayout3"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_toRightOf="@id/tvMail"
-                android:background="@android:color/transparent"
-                android:hint="Demo"
-                android:padding="10dp"
-                android:textAlignment="textEnd"
-                android:textColor="?attr/text_color"
-                android:textColorHint="?attr/hint_text_color"
-                android:textSize="14sp" />
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_background"
+                android:padding="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvText"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.75">
 
-        </RelativeLayout>
+                <ImageButton
+                    android:id="@+id/ibFullName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_full_name"
+                    app:tint="?attr/icon_color" />
 
-        <com.example.synqit.customeviews.TextViewRegular
-            android:id="@+id/tvText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="Company name will be your profile name"
-            android:textAlignment="center"
-            android:textColor="?attr/hint_text_color"
-            app:layout_constraintVertical_bias="0"
-            android:layout_marginTop="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/relativeLayout2"
-            app:layout_constraintStart_toStartOf="@+id/relativeLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+                <EditText
+                    android:id="@+id/etFullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@id/ibFullName"
+                    android:background="@android:color/transparent"
+                    android:hint="John doe"
+                    android:padding="10dp"
+                    android:textAlignment="textStart"
+                    android:singleLine="true"
+                    android:textColor="?attr/text_color"
+                    android:textColorHint="?attr/hint_text_color"
+                    android:textSize="14sp" />
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext_background"
-            android:padding="15dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvText"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintWidth_percent="0.75">
+            </RelativeLayout>
 
-            <ImageButton
-                android:id="@+id/ibFullName"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/relativeLayout5"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_full_name"
-                app:tint="?attr/icon_color" />
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_background"
+                android:padding="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.75">
 
-            <com.example.synqit.customeviews.TextViewRegular
-                android:id="@+id/tvFullName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="15dp"
-                android:layout_toRightOf="@id/ibFullName"
-                android:text="Enter Full name"
-                android:textColor="?attr/hint_text_color" />
+                <ImageButton
+                    android:id="@+id/ibCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_location"
+                    app:tint="?attr/icon_color" />
 
-            <EditText
-                android:id="@+id/etFullName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_toRightOf="@id/tvFullName"
-                android:background="@android:color/transparent"
-                android:hint="John doe"
-                android:padding="10dp"
-                android:textAlignment="textEnd"
-                android:textColor="?attr/text_color"
-                android:textColorHint="?attr/hint_text_color"
-                android:textSize="14sp" />
+                <EditText
+                    android:id="@+id/etCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@id/ibCountry"
+                    android:singleLine="true"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="india"
+                    android:onClick="@{() -> viewModel.onCountryClick()}"
+                    android:padding="10dp"
+                    android:textAlignment="textStart"
+                    android:textColor="?attr/text_color"
+                    android:textColorHint="?attr/hint_text_color"
+                    android:textSize="14sp"
+                    tools:ignore="Deprecated" />
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext_background"
-            android:padding="15dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintWidth_percent="0.75">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnContinue"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginVertical="75dp"
+                android:backgroundTint="?attr/button_color"
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:textColor="?attr/btn_text_color"
+                app:cornerRadius="35dp"
+                android:onClick="@{() -> viewModel.onContinueClick()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout5"
+                app:layout_constraintVertical_bias="1"
+                app:layout_constraintWidth_percent="0.75" />
 
-            <ImageButton
-                android:id="@+id/ibCountry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_location"
-                app:tint="?attr/icon_color" />
-
-            <com.example.synqit.customeviews.TextViewRegular
-                android:id="@+id/tvCountry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="15dp"
-                android:layout_toRightOf="@id/ibCountry"
-                android:text="Country"
-                android:textColor="?attr/hint_text_color" />
-
-            <EditText
-                android:id="@+id/etCountry"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_toRightOf="@id/tvCountry"
-                android:background="@android:color/transparent"
-                android:clickable="true"
-                android:editable="false"
-                android:focusable="false"
-                android:hint="india"
-                android:padding="10dp"
-                android:textAlignment="textEnd"
-                android:textColor="?attr/text_color"
-                android:textColorHint="?attr/hint_text_color"
-                android:textSize="14sp"
-                tools:ignore="Deprecated" />
-
-        </RelativeLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnContinue"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginVertical="75dp"
-            android:backgroundTint="?attr/button_color"
-            android:text="Continue"
-            android:textAllCaps="false"
-            android:textColor="?attr/btn_text_color"
-            app:cornerRadius="35dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout5"
-            app:layout_constraintVertical_bias="1"
-            app:layout_constraintWidth_percent="0.75" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
-</FrameLayout>
+</layout>

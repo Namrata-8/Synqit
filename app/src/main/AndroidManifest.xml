@@ -1,22 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.synqit">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.STORAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Synqit">
         <activity
-            android:name=".UI.DashboardActivity"
+            android:name=".ui.addlink.AddLinkActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.ProUpgradeActivity"
+            android:name=".ui.DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.OnBoardingActivity"
+            android:name=".ui.proupgrade.ProUpgradeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.OnBoardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,19 +37,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UI.OtpVerificationActivity"
-            android:exported="true" />
+            android:name=".ui.otpverification.OtpVerificationActivity"
+            android:exported="false" />
         <activity
-            android:name=".UI.RegisterAsActivity"
-            android:exported="true" />
-        <activity
-            android:name=".UI.RegisterActivity"
-            android:exported="true" />
-        <activity
-            android:name=".UI.LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name=".UI.MainActivity"
+            android:name=".ui.RegisterAsActivity"
             android:exported="true">
 
             <!--
@@ -48,6 +51,32 @@
             </intent-filter>
             -->
         </activity>
+        <activity
+            android:name=".ui.register.RegisterActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_path"
+                tools:replace="android:resource" />
+        </provider>
+
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_Crop" />
     </application>
 
 </manifest>

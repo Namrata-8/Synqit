@@ -6,6 +6,13 @@
     <string name="on_boarding_3">SYNQIT Direct allows you to share any 1 link of your choice</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_email">Please enter email</string>
+    <string name="error_valid_email">Please enter valid email address</string>
+    <string name="error_enter_mobile">Please enter moile number</string>
+    <string name="password_msg">Password must be at least 6 characters long and contain a number , an uppercase , lowercase letter and special character.</string>
+    <string name="error_comp_name">Please Enter Company Name</string>
+    <string name="error_full_name">Please enter full name</string>
+    <string name="error_select_country">Please Select country name</string>
 
     <string-array name="countries" formatted="false" translatable="false">
         <item>Afghanistan</item>

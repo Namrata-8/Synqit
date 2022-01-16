@@ -1,14 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Fragments.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.synqit.fragments.homefragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.fragments.homefragment.HomeFragmentViewModel" />
+
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:overScrollMode="never">
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/main_background">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/layoutImages"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.9"
+            app:layout_constraintVertical_bias="0">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardCover"
+            android:layout_width="match_parent"
+            android:layout_height="181dp"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="10dp"
+            android:layout_margin="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/demo_recatngle" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:civ_border_color="?attr/btn_text_color"
+                app:civ_border_width="5dp"
+                android:src="@mipmap/ic_launcher"
+                app:layout_anchor="@id/cardCover"
+                app:layout_anchorGravity="center|bottom"
+                android:elevation="10dp"/>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.example.synqit.customeviews.TextViewBold
+            android:id="@+id/textViewBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Md Shohanur Rahman"
+            android:textColor="?attr/text_color"
+            android:textSize="18sp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textViewSemiBold"
+            app:layout_constraintStart_toStartOf="@+id/layoutImages"
+            app:layout_constraintTop_toBottomOf="@+id/layoutImages"
+            app:layout_constraintVertical_bias="0" />
+
+        <com.example.synqit.customeviews.TextViewSemiBold
+            android:id="@+id/textViewSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_text_private"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="10dp"
+            android:text="Private"
+            android:textColor="?attr/text_color"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewBold"
+            app:layout_constraintEnd_toEndOf="@+id/layoutImages"
+            app:layout_constraintTop_toTopOf="@+id/textViewBold" />
+
+        <com.example.synqit.customeviews.TextViewSemiBold
+            android:id="@+id/textViewSemiBold2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="40dp"
+            android:text="Your Links"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/textViewBold"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSemiBold"
+            app:layout_constraintVertical_bias="0" />
+
+        <com.suke.widget.SwitchButton
+            android:id="@+id/switch_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewSemiBold2"
+            app:layout_constraintEnd_toEndOf="@+id/textViewSemiBold"
+            app:layout_constraintStart_toEndOf="@+id/textViewSemiBold2"
+            app:layout_constraintTop_toTopOf="@+id/textViewSemiBold2"
+            app:layout_constraintHorizontal_bias="1"
+            app:sb_show_indicator="false"
+            app:sb_checked="true"
+            app:sb_checked_color="@color/orange"
+            app:sb_border_width="2dp"
+            app:sb_uncheck_color="?attr/switch_unchecked"/>
+
+        <com.example.synqit.customeviews.TextViewSemiBold
+            android:id="@+id/textViewSemiBold3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_button"
+            android:paddingVertical="20dp"
+            android:text="Add Link"
+            android:textAlignment="center"
+            android:textColor="?attr/text_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/layoutImages"
+            app:layout_constraintStart_toStartOf="@+id/layoutImages"
+            app:layout_constraintTop_toBottomOf="@+id/switch_button"
+            app:layout_constraintVertical_bias="0" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSemiBold3"
+            app:layout_constraintVertical_bias="0"
+            android:layout_marginTop="10dp"
+            android:scrollbars="none"
+            tools:listitem="@layout/row_link"
+            android:overScrollMode="never"
+            android:nestedScrollingEnabled="false"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

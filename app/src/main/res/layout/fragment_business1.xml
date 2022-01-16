@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/main_background"
-    tools:context=".Fragments.BusinessFragment1">
+    tools:context=".fragments.BusinessFragment1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -103,10 +103,11 @@
                     android:layout_above="@id/cardBusiness"
                     android:layout_alignEnd="@+id/cardBusiness"
                     android:background="@drawable/circle"
+                    android:backgroundTint="?attr/text_color"
                     android:elevation="12.1dp"
                     android:gravity="center"
                     android:text="Pro"
-                    android:textColor="?attr/text_color"
+                    android:textColor="?attr/btn_text_color"
                     android:textSize="12sp"
                     android:visibility="visible"
                     app:layout_anchor="@id/cardBusiness"

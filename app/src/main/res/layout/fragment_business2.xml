@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="?attr/main_background"
-    tools:context=".Fragments.BusinessFragment2">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.synqit.fragments.businessfragment2.BusinessFragment2">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.fragments.businessfragment2.BusinessFragment2ViewModel" />
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?attr/main_background">
 
         <com.example.synqit.customeviews.TextViewRegular
             android:id="@+id/textViewRegular"
@@ -29,21 +37,25 @@
             android:id="@+id/rvBusiness"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/btnContinue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRegular"
+            app:layout_constraintWidth_percent="0.85"
             app:spanCount="2"
-            tools:listitem="@layout/item_business_card"
-            app:layout_constraintWidth_percent="0.8"
-            app:layout_constraintTop_toBottomOf="@+id/textViewRegular" />
+            tools:listitem="@layout/item_business_card" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnContinue"
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_marginBottom="25dp"
             android:backgroundTint="?attr/button_color"
             android:text="Continue"
+            android:onClick="@{() -> viewModel.onContinueClick()}"
             android:textAllCaps="false"
             android:textColor="?attr/btn_text_color"
             app:cornerRadius="35dp"
@@ -52,9 +64,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rvBusiness"
             app:layout_constraintVertical_bias="1"
-            android:layout_marginBottom="75dp"
             app:layout_constraintWidth_percent="0.75" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+</layout>

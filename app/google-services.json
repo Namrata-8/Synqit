@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "207224312411",
+    "project_id": "synqit-f266a",
+    "storage_bucket": "synqit-f266a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207224312411:android:b9133b9c07019a862aa57e",
+        "android_client_info": {
+          "package_name": "com.example.synqit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207224312411-sbug3s4q59e3pelgirnoluga5mai7ajb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHohSPxgK2rnPn9kNPuStegKXVrRwLFno"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207224312411-sbug3s4q59e3pelgirnoluga5mai7ajb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "207224312411-eb92a815gtfrd49pgio2di4rf4d884ej.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Synqit"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207224312411:android:e193b3f50a20c4f02aa57e",
+        "android_client_info": {
+          "package_name": "com.horizam.SYNQIT"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207224312411-sbug3s4q59e3pelgirnoluga5mai7ajb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHohSPxgK2rnPn9kNPuStegKXVrRwLFno"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207224312411-sbug3s4q59e3pelgirnoluga5mai7ajb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "207224312411-eb92a815gtfrd49pgio2di4rf4d884ej.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Synqit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
