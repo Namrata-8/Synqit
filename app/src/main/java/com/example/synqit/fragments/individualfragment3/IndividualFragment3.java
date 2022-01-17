@@ -145,6 +145,8 @@ public class IndividualFragment3 extends Fragment implements BusinessFragment4Na
                         getActivity().finish();
                     }else {
                         Toast.makeText(getActivity(), fullRegisterResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getActivity(), DashboardActivity.class));
+                        getActivity().finish();
                     }
                 }
             }

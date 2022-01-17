@@ -47,6 +47,8 @@ public class ProUpgradeActivity extends AppCompatActivity implements ProUpgradeN
                         finish();
                     }else {
                         Toast.makeText(ProUpgradeActivity.this, fullRegisterResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(ProUpgradeActivity.this, DashboardActivity.class));
+                        finish();
                     }
                 }
             }

@@ -51,6 +51,11 @@
                 app:layout_constraintVertical_bias="0"
                 app:layout_constraintWidth_percent="0.55">
 
+                <RelativeLayout
+                    android:id="@+id/rlQr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
                 <ImageView
                     android:id="@+id/ivQr"
                     android:layout_width="175dp"
@@ -62,15 +67,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:background="@color/white"
+                    android:background="?attr/bg_card"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="20dp"
-                    android:text="Card" />
+                    android:text="Card"
+                    android:textColor="?attr/text_color"/>
+
+                </RelativeLayout>
 
                 <com.example.synqit.customeviews.TextViewSemiBold
+                    android:id="@+id/tvCopy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/ivQr"
+                    android:layout_below="@id/rlQr"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/bg_tv_link"
                     android:drawableEnd="@drawable/ic_copy"
@@ -83,22 +92,137 @@
             </RelativeLayout>
 
             <com.example.synqit.customeviews.TextViewSemiBold
+                android:id="@+id/textViewSemiBold8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
                 android:text="Tap to copy link"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="25dp"
-                app:layout_constraintTop_toBottomOf="@+id/relativeLayout18" />
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout18"
+                app:layout_constraintVertical_bias="0" />
 
             <RelativeLayout
+                android:id="@+id/relativeLayout19"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_tv_custom_qr">
+                android:layout_marginTop="25dp"
+                android:background="@drawable/bg_tv_custom_qr"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSemiBold8"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.57">
+
+                <com.example.synqit.customeviews.TextViewBold
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_toLeftOf="@id/tvProBusiness"
+                    android:text="Create Custom QR"
+                    android:textColor="?attr/text_color" />
+
+                <com.example.synqit.customeviews.TextViewRegular
+                    android:id="@+id/tvProBusiness"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="?attr/text_color"
+                    android:elevation="12.1dp"
+                    android:gravity="center"
+                    android:text="Pro"
+                    android:textColor="?attr/btn_text_color"
+                    android:textSize="13sp"
+                    android:visibility="visible" />
 
             </RelativeLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout19"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.5">
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout11"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/relativeLayout12"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginVertical="15dp"
+                        app:cardCornerRadius="50dp"
+                        app:cardElevation="8dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="?attr/bg_card"
+                            android:padding="15dp">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/ic_arrow_share"
+                                app:tint="?attr/icon_color"
+                                android:padding="2dp"/>
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/relativeLayout11"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginVertical="15dp"
+                        app:cardCornerRadius="50dp"
+                        app:cardElevation="8dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="?attr/bg_card"
+                            android:padding="15dp">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_wallet"
+                                android:padding="2dp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

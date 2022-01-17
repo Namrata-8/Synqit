@@ -43,5 +43,7 @@
     <attr name="row_influencers_border" format="color"/>
     <attr name="bg_tv_link_border" format="color"/>
     <attr name="bg_tv_link" format="color"/>
+    <attr name="row_link_border_unselected" format="color"/>
+    <attr name="row_link_border_selected" format="color"/>
 
 </resources>

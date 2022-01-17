@@ -18,10 +18,30 @@
         <com.example.synqit.customeviews.TextViewBold
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="?attr/text_color"
             android:layout_margin="20dp"
-            android:textSize="25sp"
-            android:text="SYNQIT"/>
+            android:text="SYNQIT"
+            android:textColor="?attr/text_color"
+            android:textSize="25sp" />
+
+        <ImageButton
+            android:id="@+id/btnShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_share" />
+
+        <ImageButton
+            android:id="@+id/btnEye"
+            android:layout_toLeftOf="@id/btnShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_eye"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"/>
 
     </RelativeLayout>
 
@@ -43,30 +63,30 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/bottom_nav_menu"
         android:layout_gravity="bottom"
         android:background="#1F1E25"
+        android:paddingBottom="15dp"
         app:itemIconTint="@drawable/bottomnavcolor"
         app:labelVisibilityMode="unlabeled"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:paddingBottom="15dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnScan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:elevation="10dp"
-        app:borderWidth="0dp"
+        android:layout_marginBottom="65dp"
         android:backgroundTint="@color/orange"
+        android:gravity="center"
         android:src="@drawable/ic_persons"
-        app:tint="@color/white"
+        app:borderWidth="0dp"
+        app:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="@+id/bottomNavigationView"
         app:layout_constraintStart_toStartOf="@+id/bottomNavigationView"
         app:layout_constraintTop_toTopOf="@id/bottomNavigationView"
-        android:layout_marginBottom="65dp"
-        android:gravity="center" />
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

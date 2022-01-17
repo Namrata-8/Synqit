@@ -55,6 +55,14 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/demo_recatngle" />
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_edit"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="15dp"/>
+
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
@@ -92,7 +100,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_text_private"
             android:paddingHorizontal="15dp"
-            android:paddingVertical="10dp"
+            android:paddingVertical="8dp"
             android:text="Private"
             android:textColor="?attr/text_color"
             app:layout_constraintBottom_toBottomOf="@+id/textViewBold"
@@ -146,6 +154,7 @@
             app:layout_constraintVertical_bias="0" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvYourLink"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -155,6 +164,9 @@
             app:layout_constraintVertical_bias="0"
             android:layout_marginTop="10dp"
             android:scrollbars="none"
+            tools:itemCount="4"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
             tools:listitem="@layout/row_link"
             android:overScrollMode="never"
             android:nestedScrollingEnabled="false"/>

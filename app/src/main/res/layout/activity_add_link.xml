@@ -160,12 +160,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView">
 
-                <androidx.recyclerview.widget.RecyclerView
+                2<androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/row_swipe_card"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintVertical_bias="0"/>
@@ -228,6 +231,7 @@
                     app:layout_constraintTop_toTopOf="@+id/textViewBold2" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/textViewBold2"
@@ -237,6 +241,8 @@
                     app:layout_constraintVertical_bias="0"
                     android:layout_marginTop="10dp"
                     tools:itemCount="3"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="vertical"
                     tools:listitem="@layout/row_influencers"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -258,7 +264,8 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="275dp"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="13dp">
+                        app:cardCornerRadius="13dp"
+                        android:layout_margin="12dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -267,7 +274,9 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="150dp"/>
+                                android:layout_height="150dp"
+                                android:src="@drawable/demo2"
+                                android:scaleType="fitXY"/>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -275,11 +284,24 @@
                                 android:layout_weight="1">
 
                                 <com.example.synqit.customeviews.TextViewBold
+                                    android:id="@+id/tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Social Media"
                                     android:textColor="?attr/text_color"
-                                    android:textSize="16sp"/>
+                                    android:textSize="16sp"
+                                    android:layout_marginStart="15dp"
+                                    android:layout_marginTop="15dp"/>
+
+                                <com.example.synqit.customeviews.TextViewRegular
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/tv"
+                                    android:layout_marginHorizontal="15dp"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Authoritatively initiate team building leadership skills with quality action items. Dynamically initiate tactical ideas rather than interdependent synergy. "
+                                    android:textColor="?attr/text_color_light"
+                                    android:textSize="14sp" />
 
                             </RelativeLayout>
 

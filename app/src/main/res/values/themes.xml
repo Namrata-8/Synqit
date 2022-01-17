@@ -58,6 +58,8 @@
         <item name="row_influencers_border">#ECECEC</item>
         <item name="bg_tv_link_border">#FAFAFA</item>
         <item name="bg_tv_link">@color/white</item>
+        <item name="row_link_border_unselected">#F5F7FB</item>
+        <item name="row_link_border_selected">@color/orange</item>
     </style>
 
     <style name="AppTheme_Crop" parent="Theme.MaterialComponents.DayNight.DarkActionBar">

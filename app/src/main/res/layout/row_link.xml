@@ -4,9 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingVertical="12dp"
-    android:paddingHorizontal="15dp"
     android:layout_marginVertical="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintWidth_percent="0.85"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_row_link"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     <ImageView
         android:id="@+id/imageView"
@@ -16,9 +24,10 @@
         app:layout_constraintBottom_toBottomOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
-        android:tint="?attr/icon_color"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cardView2" />
+        app:layout_constraintTop_toTopOf="@+id/cardView2"
+        app:tint="?attr/icon_color"
+        android:layout_marginStart="12dp"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -26,6 +35,7 @@
         android:layout_height="45dp"
         android:layout_marginHorizontal="12dp"
         app:cardCornerRadius="10dp"
+        android:layout_marginVertical="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -34,9 +44,10 @@
         app:layout_constraintVertical_bias="0">
 
         <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_facebook" />
     </androidx.cardview.widget.CardView>
 
     <com.example.synqit.customeviews.TextViewSemiBold
@@ -61,8 +72,11 @@
         app:layout_constraintHorizontal_bias="1"
         app:sb_show_indicator="false"
         app:sb_checked="true"
+        android:layout_marginEnd="12dp"
         app:sb_checked_color="@color/orange"
         app:sb_border_width="2dp"
         app:sb_uncheck_color="?attr/switch_unchecked"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
