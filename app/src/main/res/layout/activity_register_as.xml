@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="25dp"
+            android:layout_margin="15dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_arrow_left"
             app:tint="?attr/icon_color" />
@@ -83,6 +83,20 @@
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent="0.75" />
 
+    <com.example.synqit.customeviews.TextViewBold
+        android:id="@+id/textVieww"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Are you an Individual or a Business?"
+        android:textColor="?attr/text_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintWidth_percent="0.75" />
+
     <com.example.synqit.customeviews.TextViewRegular
         android:id="@+id/tvBusinessAccount"
         android:layout_width="0dp"
@@ -95,7 +109,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textVieww"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent="0.75" />
 

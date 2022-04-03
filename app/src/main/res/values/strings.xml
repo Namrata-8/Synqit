@@ -13,6 +13,32 @@
     <string name="error_comp_name">Please Enter Company Name</string>
     <string name="error_full_name">Please enter full name</string>
     <string name="error_select_country">Please Select country name</string>
+    <string name="error_city_name">Please enter city name</string>
+
+    <string name="facebook_app_id">359851475524710</string>
+    <string name="fb_login_protocol_scheme">fb359851475524710</string>
+    <string name="facebook_client_token">a7079fc845baa858bfe7ce50b556a791</string>
+    <string name="error_enter_bio">Please enter max 30 characters</string>
+    <string name="error_website">Please enter website url</string>
+    <string name="error_location">Please enter your location</string>
+    <string name="error_social_media">Please enter Social media</string>
+    <string name="error_job_title">Please enter job title</string>
+    <string name="error_note">Please enter note</string>
+    <string name="info_text_add_link">Interactively monetize progressive deliverables after 24/7 schemas. Enthusiastically enable front-end relationships through reliable resources. Seamlessly e-enable economically sound schemas rather than frictionless web services. Monotonectally administrate.</string>
+    <string name="text_demo_1">Interactively monetize progressive deliverables after 24/7 schemas. Enthusiastically enable front-end relationships through reliable resources. Seamlessly e-enable economically sound schemas rather than frictionless web services. Monotonectally administrate.</string>
+
+    <string name="pro_title_1">Feature  Demo</string>
+    <string name="pro_title_2">Feature  Demo</string>
+    <string name="pro_title_3">Feature  Demo</string>
+
+    <string name="pro_desc_1">Dramatically morph intermandated technologies with customized strategic theme areas. Monotonectally reconceptualize client-focused systems without transparent initiatives. Rapidiously restore clicks-and…</string>
+    <string name="pro_desc_2">Dramatically morph intermandated technologies with customized strategic theme areas. Monotonectally reconceptualize client-focused systems without transparent initiatives. Rapidiously restore clicks-and…</string>
+    <string name="pro_desc_3">Dramatically morph intermandated technologies with customized strategic theme areas. Monotonectally reconceptualize client-focused systems without transparent initiatives. Rapidiously restore clicks-and…</string>
+    <string name="demo_text_faq">Interactively synergize resource sucking supply chains with revolutionary partnerships. Uniquely pontificate B2C thinking rather than vertical catalysts for change. Progressively re-engineer business information through future-proof content. Energistically harness premium methods of empowerment rather than long-term high-impact customer service. Seamlessly predominate bricks-and-clicks benefits without integrated growth.</string>
+    <string name="error_username">Please enter valid username</string>
+    <string name="error_title">Please enter valid title</string>
+    <string name="error_desc">Please Enter valid Description</string>
+    <string name="password_msg_2">Password is not matching</string>
 
     <string-array name="countries" formatted="false" translatable="false">
         <item>Afghanistan</item>

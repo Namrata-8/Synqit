@@ -1,10 +1,13 @@
 package com.example.synqit.ui.proupgrade.model;
 
+import com.example.synqit.ui.dashboard.model.CardData;
 import com.google.gson.annotations.SerializedName;
 
 public class FullRegisterData {
     @SerializedName("userID")
     private String userID;
+    @SerializedName("parentUserID")
+    private String parentUserID;
     @SerializedName("email")
     private String email;
     @SerializedName("password")
@@ -29,8 +32,18 @@ public class FullRegisterData {
     private String qrCode;
     @SerializedName("mobileNumber")
     private String mobileNumber;
+    @SerializedName("country")
+    private String country;
+    @SerializedName("city")
+    private String city;
     @SerializedName("isPrivate")
     private boolean isPrivate;
+    @SerializedName("isSocialLogin")
+    private boolean isSocialLogin;
+    @SerializedName("isDirect")
+    private boolean isDirect;
+    @SerializedName("isFullRegistered")
+    private boolean isFullRegistered;
 
     public String getUserID() {
         return userID;
@@ -86,5 +99,29 @@ public class FullRegisterData {
 
     public boolean isPrivate() {
         return isPrivate;
+    }
+
+    public String getParentUserID() {
+        return parentUserID;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public boolean isSocialLogin() {
+        return isSocialLogin;
+    }
+
+    public boolean isDirect() {
+        return isDirect;
+    }
+
+    public boolean isFullRegistered() {
+        return isFullRegistered;
     }
 }

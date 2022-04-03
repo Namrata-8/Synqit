@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.fragments.connectionsfragment.ConnectionsFragmentViewModel" />
+
+    </data>
+
+    <com.chauthai.swipereveallayout.SwipeRevealLayout
+        android:id="@+id/swipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mode="same_level"
+        app:dragEdge="right">
+
+        <!-- Your secondary layout here -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_gravity="center">
+
+                <ImageButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_delete"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    android:layout_marginStart="25dp"
+                    app:tint="?attr/icon_color" />
+
+                <ImageButton
+                    android:id="@+id/btnFavorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_favorite"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent" />
+
+                <ImageButton
+                    android:id="@+id/btnBlock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_outline_lock"
+                    android:layout_marginEnd="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    app:tint="?attr/icon_color" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <!-- Your main layout here -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="13dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/bg_card">
+
+                    <androidx.coordinatorlayout.widget.CoordinatorLayout
+                        android:id="@+id/coordinatorLayout3"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_margin="25dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/ivImage"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:src="@drawable/img_demo" />
+
+                        <com.example.synqit.customeviews.TextViewSemiBold
+                            android:id="@+id/tvProBusiness"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/circle"
+                            android:backgroundTint="?attr/text_color"
+                            android:gravity="center"
+                            android:text="Pro"
+                            android:textColor="?attr/btn_text_color"
+                            android:textSize="8sp"
+                            android:visibility="visible"
+                            app:layout_anchor="@id/ivImage"
+                            app:layout_anchorGravity="bottom|end" />
+
+                    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+                    <com.example.synqit.customeviews.TextViewBold
+                        android:id="@+id/tvName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:textColor="?attr/text_color"
+                        android:text="@{viewModel.connectedData.displayName}"
+                        android:layout_marginEnd="10dp"
+                        android:lines="1"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/rlBlue"
+                        app:layout_constraintStart_toEndOf="@+id/coordinatorLayout3"
+                        app:layout_constraintTop_toTopOf="@+id/coordinatorLayout3"
+                        app:layout_constraintVertical_bias="0" />
+
+                    <com.example.synqit.customeviews.TextViewSemiBold
+                        android:id="@+id/tvCountry"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="@{viewModel.connectedData.location}"
+                        android:textColor="?attr/hint_text_color"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/coordinatorLayout3"
+                        app:layout_constraintTop_toBottomOf="@+id/tvName"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintVertical_bias="0" />
+
+                    <com.example.synqit.customeviews.TextViewSemiBold
+                        android:id="@+id/tvDesc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="30dp"
+                        android:text="Los Angles, CAt"
+                        android:textColor="?attr/text_color"
+                        android:textSize="13sp"
+                        android:lines="1"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/tvName"
+                        app:layout_constraintStart_toEndOf="@+id/coordinatorLayout3"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCountry"
+                        app:layout_constraintVertical_bias="0" />
+
+                    <RelativeLayout
+                        android:id="@+id/rlBlue"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/circle"
+                        android:backgroundTint="#50ABF1"
+                        app:layout_constraintVertical_bias="0"
+                        android:layout_marginEnd="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/coordinatorLayout3">
+
+                        <ImageView
+                            android:id="@+id/ivCheckBlue"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_check_sign"
+                            android:visibility="visible"
+                            app:tint="@color/white" />
+
+                    </RelativeLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </FrameLayout>
+
+    </com.chauthai.swipereveallayout.SwipeRevealLayout>
+
+</layout>

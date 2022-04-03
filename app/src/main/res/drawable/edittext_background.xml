@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <corners android:radius="13dp" />
-    <solid android:color="?attr/bg_edittext"/>
-    <stroke android:color="?attr/bg_edittext_border"
-        android:width="2dp"/>
+    <solid android:color="?attr/bg_edittext" />
+    <stroke
+        android:width="2dp"
+        android:color="?attr/bg_edittext_border" />
 </shape>

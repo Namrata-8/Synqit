@@ -9,21 +9,28 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_synqit_logo"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:noHistory="true"
+        android:roundIcon="@mipmap/ic_synqit_logo_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Synqit">
+        android:theme="@style/Theme.Synqit"
+        tools:replace="android:theme, android:icon, android:allowBackup">
         <activity
-            android:name=".ui.addlink.AddLinkActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.DashboardActivity"
-            android:exported="true" >
+            android:name=".TestOCRActivity"
+            android:exported="false" >
             <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,32 +38,102 @@
             </intent-filter>-->
         </activity>
         <activity
-            android:name=".ui.proupgrade.ProUpgradeActivity"
+            android:name=".ui.resetpass.ResetPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.OnBoardingActivity"
+            android:name=".ui.forgotpass.ForgotPassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.maps.MapsActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".ui.RazerpayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.support.SupportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.membership.MembershipActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.howtouse.HowToUseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activateproduct.ActivateProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.blockedconnections.BlockedConnectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SplashActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="app.synqit.in"
+                    android:scheme="http" />
+            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+                <action android:name="android.nfc.action.TAG_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="app.synqit.in"
+                    android:scheme="http" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
         </activity>
+        <activity
+            android:name=".ui.PrivacySettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.account.AccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.editprofile.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.createconnection.CreateConnectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.addlink.AddLinkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.dashboard.DashboardActivity"
+            android:exported="false"
+            android:noHistory="true" />
+        <activity
+            android:name=".ui.proupgrade.ProUpgradeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.OnBoardingActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.otpverification.OtpVerificationActivity"
             android:exported="false" />
         <activity
             android:name=".ui.RegisterAsActivity"
-            android:exported="true">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false"
@@ -83,6 +160,35 @@
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme_Crop" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.livechatinc.inappchat.ChatWindowActivity"
+            android:configChanges="orientation|screenSize" />
+
+        <meta-data android:name="com.google.firebase.ml.vision.DEPENDENCIES" android:value="ocr"/>
     </application>
 
 </manifest>

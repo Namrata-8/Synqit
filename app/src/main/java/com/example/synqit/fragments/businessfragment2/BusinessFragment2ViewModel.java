@@ -1,5 +1,6 @@
 package com.example.synqit.fragments.businessfragment2;
 
+import android.app.Activity;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -8,9 +9,12 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.example.synqit.R;
 import com.example.synqit.fragments.businessfragment2.model.BusinessData;
 import com.example.synqit.fragments.businessfragment2.model.BusinessResponse;
 import com.example.synqit.retrofit.RetrofitClient;
+import com.example.synqit.utils.LoadingDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,16 +52,20 @@ public class BusinessFragment2ViewModel extends ViewModel {
 
     @BindingAdapter({"imageUrl"})
     public static void loadimage(ImageView imageView, String imageUrl){
-        Glide.with(imageView.getContext()).load(imageUrl).into(imageView);
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.ic_business);
+        Glide.with(imageView.getContext()).setDefaultRequestOptions(requestOptions).load(imageUrl).into(imageView);
     }
 
-    public MutableLiveData<ArrayList<BusinessFragment2ViewModel>> getBusinessesData() {
+    public MutableLiveData<ArrayList<BusinessFragment2ViewModel>> getBusinessesData(Activity activity) {
         arrayList=new ArrayList<>();
-
+        LoadingDialog loadingDialog = new LoadingDialog(activity);
+        loadingDialog.startLoadingDialog();
         Call<BusinessResponse> call = RetrofitClient.getInstance().getApi().getBusinesses();
         call.enqueue(new Callback<BusinessResponse>() {
             @Override
             public void onResponse(Call<BusinessResponse> call, Response<BusinessResponse> response) {
+                loadingDialog.dismissDialog();
                 if (response.isSuccessful()){
                     businessDataList = new ArrayList<>();
                     businessDataList = response.body().getData();
@@ -72,6 +80,7 @@ public class BusinessFragment2ViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<BusinessResponse> call, Throwable t) {
+                loadingDialog.dismissDialog();
                 Log.e("getBusinesses?onFailure", t.getMessage());
             }
         });

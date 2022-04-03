@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.ui.dashboard.DashboardViewModel" />
+
+    </data>
+
+    <com.chauthai.swipereveallayout.SwipeRevealLayout
+        android:id="@+id/swipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mode="same_level"
+        app:dragEdge="right">
+
+        <!-- Your secondary layout here -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center">
+
+                <ImageButton
+                    android:id="@+id/btnView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_eye"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/transparent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="40dp"
+                    app:tint="?attr/icon_color" />
+
+                <ImageButton
+                    android:id="@+id/btnEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_edit"
+                    android:background="@android:color/transparent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginTop="30dp" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <!-- Your main layout here -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="8dp"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginVertical="15dp"
+                app:cardCornerRadius="12dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/selectLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_card_business">
+
+                    <com.example.synqit.customeviews.TextViewBold
+                        android:id="@+id/tvCardName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="30dp"
+                        android:text="@{viewModel.displayName}"
+                        android:textColor="?attr/btn_text_color"
+                        android:textSize="22sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0" />
+
+                    <com.example.synqit.customeviews.TextViewBold
+                        android:id="@+id/tvBusinessType"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.profileType}"
+                        android:textColor="?attr/btn_text_color"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/tvCardName"
+                        app:layout_constraintTop_toBottomOf="@id/tvCardName"
+                        app:layout_constraintVertical_bias="0" />
+
+                    <com.example.synqit.customeviews.TextViewBold
+                        android:id="@+id/tvName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginBottom="30dp"
+                        android:layout_marginEnd="20dp"
+                        android:text="@{viewModel.profileName}"
+                        android:textColor="?attr/text_color"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/tvCardName"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCardName"
+                        app:layout_constraintVertical_bias="0" />
+
+                    <!--<com.example.synqit.customeviews.TextViewRegular
+                        android:id="@+id/tvBusinessType"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="30dp"
+                        android:text="@{viewModel.country}"
+                        android:textColor="?attr/text_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/tvName"
+                        app:layout_constraintTop_toBottomOf="@+id/tvName"
+                        app:layout_constraintVertical_bias="0" />-->
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="55dp"
+                        android:layout_height="45dp"
+                        android:layout_marginEnd="30dp"
+                        android:src="@drawable/ic_synqit_color_logo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--<ImageButton
+                android:id="@+id/btnCheck"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_tick"
+                android:background="@android:color/transparent"
+                android:layout_gravity="right|bottom"
+                android:layout_margin="15dp"
+                android:elevation="8dp"/>-->
+
+        </FrameLayout>
+
+    </com.chauthai.swipereveallayout.SwipeRevealLayout>
+
+
+
+</layout>

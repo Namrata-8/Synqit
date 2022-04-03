@@ -17,6 +17,8 @@
 package com.example.synqit.utils;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -24,8 +26,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.provider.Settings;
 import android.util.Patterns;
+import android.widget.LinearLayout;
 
 import com.example.synqit.R;
+import com.example.synqit.ui.dashboard.model.CardData;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,6 +41,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class CommonUtils {
+
+    private static Dialog loadingDialog;
 
     private CommonUtils() {
         // This utility class is not publicly instantiable
@@ -54,31 +61,6 @@ public final class CommonUtils {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    public static String loadJSONFromAsset(Context context, String jsonFileName) throws IOException {
-        AssetManager manager = context.getAssets();
-        InputStream is = manager.open(jsonFileName);
-
-        int size = is.available();
-        byte[] buffer = new byte[size];
-        is.read(buffer);
-        is.close();
-
-        return new String(buffer, "UTF-8");
-    }
-
-    public static ProgressDialog showLoadingDialog(Context context) {
-        ProgressDialog progressDialog = new ProgressDialog(context);
-        progressDialog.show();
-        if (progressDialog.getWindow() != null) {
-            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        }
-        progressDialog.setContentView(R.layout.progress_dialog);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setCancelable(false);
-        progressDialog.setCanceledOnTouchOutside(false);
-        return progressDialog;
-    }
-
     public static boolean isValidPassword(String s) {
         Pattern pattern;
         Matcher matcher;
@@ -87,5 +69,13 @@ public final class CommonUtils {
         matcher = pattern.matcher(s);
 
         return matcher.matches();
+    }
+
+    public static CardData getSelectedCard(Activity activity){
+        CardData cardData = null;
+        if (new Gson().fromJson(SessionManager.readSelectedCardData(activity, SessionManager.Selected_Card_Data, ""), CardData.class) != null) {
+            cardData = new Gson().fromJson(SessionManager.readSelectedCardData(activity, SessionManager.Selected_Card_Data, ""), CardData.class);
+        }
+        return cardData;
     }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.ui.addlink.AddLinkViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp">
+
+        <RelativeLayout
+            android:id="@+id/rlItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_country_gender_unselected_card"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageView
+                android:id="@+id/ivSelected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:src="@drawable/ccp_ic_arrow_drop_down"
+                android:visibility="gone"
+                app:tint="?attr/icon_color" />
+
+            <com.example.synqit.customeviews.TextViewRegular
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="25dp"
+                android:text="@{viewModel.filterTitle}"
+                android:textAlignment="center"
+                android:textColor="?attr/text_color" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

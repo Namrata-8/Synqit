@@ -1,82 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginVertical="10dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintWidth_percent="0.85"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/bg_row_link"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <data>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.fragments.homefragment.HomeFragmentViewModel" />
+
+    </data>
+
+    <com.chauthai.swipereveallayout.SwipeRevealLayout
+        android:id="@+id/swipeLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_dots"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cardView2"
-        app:tint="?attr/icon_color"
-        android:layout_marginStart="12dp"/>
+        app:mode="same_level"
+        app:dragEdge="right">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginHorizontal="12dp"
-        app:cardCornerRadius="10dp"
-        android:layout_marginVertical="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0">
-
-        <ImageView
+        <!-- Your secondary layout here -->
+        <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_facebook" />
-    </androidx.cardview.widget.CardView>
+            android:layout_height="match_parent" >
 
-    <com.example.synqit.customeviews.TextViewSemiBold
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FaceBook"
-        android:layout_marginStart="12dp"
-        android:textSize="16sp"
-        android:textColor="?attr/text_color"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
-        app:layout_constraintStart_toEndOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="@+id/cardView2" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center">
 
-    <com.suke.widget.SwitchButton
-        android:id="@+id/switch_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/cardView2"
-        app:layout_constraintVertical_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/cardView2"
-        app:layout_constraintHorizontal_bias="1"
-        app:sb_show_indicator="false"
-        app:sb_checked="true"
-        android:layout_marginEnd="12dp"
-        app:sb_checked_color="@color/orange"
-        app:sb_border_width="2dp"
-        app:sb_uncheck_color="?attr/switch_unchecked"/>
+                <ImageButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_delete"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/transparent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="40dp"
+                    app:tint="?attr/icon_color" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
+        <!-- Your main layout here -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bgConstraint"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_row_link"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.85">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:src="@drawable/ic_dots"
+                        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/cardView2"
+                        app:tint="?attr/icon_color" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardView2"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginVertical="10dp"
+                        app:cardCornerRadius="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0">
+
+                        <ImageView
+                            android:id="@+id/ivSocialSite"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_facebook"
+                            android:scaleType="fitXY" />
+                    </androidx.cardview.widget.CardView>
+
+                    <com.example.synqit.customeviews.TextViewSemiBold
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="@{viewModel.subscribedData.linkTitle}"
+                        android:textColor="?attr/text_color"
+                        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+                        app:layout_constraintStart_toEndOf="@+id/cardView2"
+                        app:layout_constraintTop_toTopOf="@+id/cardView2" />
+
+                    <com.suke.widget.SwitchButton
+                        android:id="@+id/switch_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        app:layout_constraintBottom_toBottomOf="@id/cardView2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1"
+                        app:layout_constraintTop_toTopOf="@id/cardView2"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:sb_border_width="2dp"
+                        app:sb_checked_color="@color/orange"
+                        app:sb_show_indicator="false"
+                        app:sb_uncheck_color="?attr/switch_unchecked" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </FrameLayout>
+
+    </com.chauthai.swipereveallayout.SwipeRevealLayout>
+
+</layout>

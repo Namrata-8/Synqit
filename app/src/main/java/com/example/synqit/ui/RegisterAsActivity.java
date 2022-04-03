@@ -1,9 +1,11 @@
 package com.example.synqit.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import com.example.synqit.adapters.ViewPagerAdapter;
 import com.example.synqit.R;
 import com.example.synqit.customeviews.CustomViewPager;
+import com.example.synqit.utils.SessionManager;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 public class RegisterAsActivity extends AppCompatActivity {
@@ -21,11 +24,19 @@ public class RegisterAsActivity extends AppCompatActivity {
     int currentPos;
     private ViewPagerAdapter viewPagerAdapter;
     private String UserType;
+    private boolean isAddNewCard = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(SessionManager.readBoolean(this, SessionManager.IS_LIGHT_DARK, false)){
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }else {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_as);
+
+        isAddNewCard = getIntent().getBooleanExtra("AddNewCard", false);
 
         btnBack = findViewById(R.id.btnBack);
         ProgressIndicator = findViewById(R.id.ProgressIndicator);
@@ -68,6 +79,11 @@ public class RegisterAsActivity extends AppCompatActivity {
     public void setPagerFragment(int a)
     {
         viewPager.setCurrentItem(a);
+    }
+
+    public boolean isAddNewCard(){
+        this.isAddNewCard = getIntent().getBooleanExtra("AddNewCard", false);
+        return isAddNewCard;
     }
 
     public void setProgressIndicator(int a, String text)

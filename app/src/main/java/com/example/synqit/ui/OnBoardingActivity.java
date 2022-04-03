@@ -1,12 +1,5 @@
 package com.example.synqit.ui;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.CompositePageTransformer;
-import androidx.viewpager2.widget.MarginPageTransformer;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,9 +8,15 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.synqit.R;
 import com.example.synqit.adapters.SliderAdapter;
 import com.example.synqit.models.SliderItems;
-import com.example.synqit.R;
+import com.example.synqit.ui.login.LoginActivity;
 import com.example.synqit.utils.SessionManager;
 import com.google.android.material.button.MaterialButton;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
@@ -31,9 +30,20 @@ public class OnBoardingActivity extends AppCompatActivity {
     private DotsIndicator dots_indicator;
     private MaterialButton btnGetStarted;
     private Handler sliderHandler = new Handler();
+    private Runnable sliderRunnable = new Runnable() {
+        @Override
+        public void run() {
+            viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(SessionManager.readBoolean(this, SessionManager.IS_LIGHT_DARK, false)){
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }else {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
         super.onCreate(savedInstanceState);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -46,11 +56,13 @@ public class OnBoardingActivity extends AppCompatActivity {
         btnGetStarted = findViewById(R.id.btnGetStarted);
 
         List<SliderItems> sliderItems = new ArrayList<>();
-        sliderItems.add(new SliderItems(R.drawable.on_boarding_1, getResources().getString(R.string.on_boarding_1)));
-        sliderItems.add(new SliderItems(R.drawable.on_boarding_2, getResources().getString(R.string.on_boarding_2)));
-        sliderItems.add(new SliderItems(R.drawable.on_boarding_3, getResources().getString(R.string.on_boarding_3)));
+        sliderItems.add(new SliderItems(R.raw.first, getResources().getString(R.string.on_boarding_1)));
+        sliderItems.add(new SliderItems(R.raw.second, getResources().getString(R.string.on_boarding_2)));
+        sliderItems.add(new SliderItems(R.raw.third, getResources().getString(R.string.on_boarding_3)));
+        sliderItems.add(new SliderItems(R.raw.fourth, getResources().getString(R.string.on_boarding_3)));
+        sliderItems.add(new SliderItems(R.raw.fifth, getResources().getString(R.string.on_boarding_3)));
 
-        viewPager2.setAdapter(new SliderAdapter(sliderItems,viewPager2));
+        viewPager2.setAdapter(new SliderAdapter(sliderItems, viewPager2, OnBoardingActivity.this));
         dots_indicator.setViewPager2(viewPager2);
 
         viewPager2.setClipToPadding(false);
@@ -58,7 +70,7 @@ public class OnBoardingActivity extends AppCompatActivity {
         viewPager2.setOffscreenPageLimit(3);
         viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
 
-        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
+        /*CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
         compositePageTransformer.addTransformer(new MarginPageTransformer(40));
         compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
             @Override
@@ -68,19 +80,17 @@ public class OnBoardingActivity extends AppCompatActivity {
             }
         });
 
-        viewPager2.setPageTransformer(compositePageTransformer);
+        viewPager2.setPageTransformer(compositePageTransformer);*/
 
         btnGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (SessionManager.readBoolean(OnBoardingActivity.this, SessionManager.IS_BASIC_REGISTER, false) ||
-                        SessionManager.readBoolean(OnBoardingActivity.this, SessionManager.Is_BASIC_LOGIN, false)){
-                    startActivity(new Intent(OnBoardingActivity.this, RegisterAsActivity.class));
-                }else {
-                    startActivity(new Intent(OnBoardingActivity.this, MainActivity.class));
-                }
 
-                Log.e("UserId", SessionManager.readString(OnBoardingActivity.this, SessionManager.BASIC_REGISTER_ID,"*"));
+
+                SessionManager.saveOnBoardingView(OnBoardingActivity.this, false);
+                startActivity(new Intent(OnBoardingActivity.this, MainActivity.class));
+
+                Log.e("UserId", SessionManager.readString(OnBoardingActivity.this, SessionManager.BR_basicRegistratinUID, "*"));
                 finish();
             }
         });
@@ -90,17 +100,10 @@ public class OnBoardingActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 sliderHandler.removeCallbacks(sliderRunnable);
-                sliderHandler.postDelayed(sliderRunnable, 3000); // slide duration 2 seconds
+                sliderHandler.postDelayed(sliderRunnable, 6000); // slide duration 2 seconds
             }
         });
     }
-
-    private Runnable sliderRunnable = new Runnable() {
-        @Override
-        public void run() {
-            viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
-        }
-    };
 
     @Override
     protected void onPause() {
@@ -111,6 +114,6 @@ public class OnBoardingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        sliderHandler.postDelayed(sliderRunnable, 3000);
+        sliderHandler.postDelayed(sliderRunnable, 16000);
     }
 }

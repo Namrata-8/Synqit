@@ -40,6 +40,8 @@ public class BusinessFragment1 extends Fragment {
         rlCardIndividual = view.findViewById(R.id.rlCardIndividual);
         rlCardBusiness = view.findViewById(R.id.rlCardBusiness);
 
+        /*Log.e("Selected Card Data", )*/
+
         cardIndividual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,8 +83,8 @@ public class BusinessFragment1 extends Fragment {
             @Override
             public void onClick(View v) {
                 if (registerAsActivity != null) {
+                    Log.e("UserId", SessionManager.readString(getActivity(), SessionManager.BR_basicRegistratinUID,"*"));
                     if (UserType.equalsIgnoreCase("Business")) {
-                        Log.e("UserId", SessionManager.readString(getActivity(), SessionManager.BASIC_REGISTER_ID,"*"));
                         SessionManager.writeString(getActivity(), SessionManager.REGISTER_AS, UserType);
                         registerAsActivity.setPagerFragment(1);
                     }else {

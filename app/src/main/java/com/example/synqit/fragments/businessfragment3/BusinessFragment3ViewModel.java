@@ -24,6 +24,10 @@ public class BusinessFragment3ViewModel extends ViewModel {
         this.countryName = countryName;
     }
 
+    public String getCountryName() {
+        return countryName;
+    }
+
     public BusinessFragment3ViewModel(BusinessFragment3Navigator businessFragment3Navigator) {
         this.businessFragment3Navigator = businessFragment3Navigator;
     }

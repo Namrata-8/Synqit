@@ -98,30 +98,13 @@
                 app:layout_constraintVertical_bias="0"
                 app:layout_constraintWidth_percent="0.75">
 
-                <RelativeLayout
-                    android:id="@+id/rlCoverPhoto"
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:background="@drawable/bg_dotted_rectangle">
-
                     <ImageView
                         android:id="@+id/ivUploadCoverPhoto"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:onClick="@{() -> viewModel.onCoverPhotoClick()}"
                         android:scaleType="fitXY"
-                        android:onClick="@{() -> viewModel.onCoverPhotoClick()}"/>
-
-                    <com.example.synqit.customeviews.TextViewSemiBold
-                        android:id="@+id/tvUploadImgText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="Tap to upload cover photo \n (optional)"
-                        android:textAlignment="center"
-                        android:textColor="?attr/text_color"
-                        android:textSize="13sp" />
-
-                </RelativeLayout>
+                        android:src="?attr/bg_drawable_cover" />
 
             </androidx.cardview.widget.CardView>
 

@@ -60,6 +60,23 @@
         <item name="bg_tv_link">@color/white</item>
         <item name="row_link_border_unselected">#F5F7FB</item>
         <item name="row_link_border_selected">@color/orange</item>
+        <item name="bg_btn_link">#FFFFFF</item>
+
+        <item name="card_unselected_x">#18171D</item>
+        <item name="card_unselected_border_x">#666666</item>
+        <item name="card_unselected_y">#111014</item>
+        <item name="card_unselected_border_y">#111014</item>
+
+        <item name="card_selected_x">#FFFFFF</item>
+        <item name="card_selected_border_x">#DBDBDB</item>
+        <item name="card_selected_y">#F0F0F0</item>
+        <item name="card_selected_border_y">#F0F0F0</item>
+        <item name="bg_et_bio_border">#F5F7FB</item>
+        <item name="bg_et_bio">#FFFFFF</item>
+        <item name="border_favorite">#DBDEE5</item>
+
+        <item name="bg_drawable_cover">@drawable/img_cover_light</item>
+        <item name="bg_drawable_cover_2">@drawable/img_cover_light_2</item>
     </style>
 
     <style name="AppTheme_Crop" parent="Theme.MaterialComponents.DayNight.DarkActionBar">

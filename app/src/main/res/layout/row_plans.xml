@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.ui.proupgrade.ProUpgradeViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/relativeLayout15"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.9">
+
+            <ImageView
+                android:id="@+id/ivCheckIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_above="@id/cardBusiness"
+                android:layout_alignEnd="@+id/cardBusiness"
+                android:background="@drawable/ic_check"
+                android:elevation="12.1dp"
+                android:gravity="center"
+                android:textColor="?attr/text_color"
+                android:textSize="12sp"
+                android:visibility="visible"
+                app:layout_anchor="@id/carPlan"
+                app:layout_anchorGravity="end|bottom"
+                app:tint="?attr/icon_color" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carPlan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="25dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="12dp">
+
+                <RelativeLayout
+                    android:id="@+id/rlCardPlan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_corner_selected_card_pro">
+
+                    <com.example.synqit.customeviews.TextViewRegular
+                        android:id="@+id/tvDiscount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/bg_discount_selected"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="8dp"
+                        android:text="@{viewModel.specialTag}"
+                        android:textColor="?attr/text_color"
+                        android:textSize="10sp" />
+
+                    <com.example.synqit.customeviews.TextViewBold
+                        android:id="@+id/tvPlanTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvDiscount"
+                        android:layout_centerHorizontal="true"
+                        android:text="@{viewModel.billingType}"
+                        android:textColor="?attr/text_color"
+                        android:textSize="20sp" />
+
+                    <com.example.synqit.customeviews.TextViewRegular
+                        android:id="@+id/tvPlanTime2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvPlanTime"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:text="@{viewModel.billingDescription}"
+                        android:textColor="?attr/text_color" />
+
+                    <com.example.synqit.customeviews.TextViewBold
+                        android:id="@+id/tvPlanAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvPlanTime2"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:text="@{viewModel.planPrice}"
+                        android:textColor="#FB6C05"
+                        android:textSize="22sp" />
+
+                    <com.example.synqit.customeviews.TextViewRegular
+                        android:id="@+id/tvPlanTrial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvPlanAmount"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="@{viewModel.freeTrial}"
+                        android:textColor="?attr/text_color" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

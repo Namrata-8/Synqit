@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.PrivacySettingActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/main_background">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="15dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_arrow_left"
+                app:tint="?attr/icon_color" />
+
+        </RelativeLayout>
+
+        <com.example.synqit.customeviews.TextViewBold
+            android:id="@+id/textViewSemiBold11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="Privacy &amp; Settings"
+            android:textColor="?attr/text_color"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            app:layout_constraintVertical_bias="0" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_background"
+            android:paddingStart="15dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSemiBold11"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageButton
+                android:id="@+id/ibPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_outline_lock_24"
+                app:tint="?attr/icon_color" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/ibPassword"
+                android:background="@android:color/transparent"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="false"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="?attr/icon_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textAlignment="textStart"
+                    android:textColor="?attr/text_color"
+                    android:textColorHint="?attr/hint_text_color"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="?attr/button_color"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="?attr/btn_text_color"
+            app:cornerRadius="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout7"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.75" />
+
+        <RelativeLayout
+            android:id="@+id/rAccountPrivate"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.8"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSave"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/switch_button"
+                android:text="Account Private"
+                android:textColor="?attr/text_color" />
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/switch_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                app:sb_border_width="2dp"
+                app:sb_checked_color="@color/orange"
+                app:sb_show_indicator="false"
+                app:sb_uncheck_color="?attr/switch_unchecked" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rNotifications"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.8"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rAccountPrivate"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/switch_button_notif"
+                android:text="Notifications"
+                android:textColor="?attr/text_color" />
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/switch_button_notif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                app:sb_border_width="2dp"
+                app:sb_checked_color="@color/orange"
+                app:sb_show_indicator="false"
+                app:sb_uncheck_color="?attr/switch_unchecked" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rLocation"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.8"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rNotifications"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/switch_button_location"
+                android:text="Location Sharing"
+                android:textColor="?attr/text_color" />
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/switch_button_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                app:sb_border_width="2dp"
+                app:sb_checked_color="@color/orange"
+                app:sb_show_indicator="false"
+                app:sb_uncheck_color="?attr/switch_unchecked" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rPrivacyPolicy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rLocation"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawableTint="?attr/icon_color"
+                android:text="Privacy Policy"
+                android:textColor="?attr/text_color" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rTermCondition"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rPrivacyPolicy"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawableTint="?attr/icon_color"
+                android:text="Terms &amp; Conditions"
+                android:textColor="?attr/text_color" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rBlocked"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rTermCondition"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawableTint="?attr/icon_color"
+                android:text="Blocked Connections"
+                android:textColor="?attr/text_color" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

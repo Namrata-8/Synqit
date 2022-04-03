@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_bottom_sheet">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_close"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.08"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.04"
+                app:tint="?attr/icon_color" />
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:id="@+id/tvLinkName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:text="New Ticket"
+                android:textAlignment="center"
+                android:textColor="?attr/text_color"
+                android:textSize="24sp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton"
+                app:layout_constraintVertical_bias="0" />
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/edittext_background"
+                android:padding="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLinkName"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.75">
+
+                <EditText
+                    android:id="@+id/etTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Report Title"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textAlignment="textStart"
+                    android:textColor="?attr/text_color"
+                    android:textColorHint="?attr/hint_text_color"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout3"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edittext_background"
+                android:padding="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.75">
+
+                <EditText
+                    android:id="@+id/etDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Enter Description"
+                    android:padding="10dp"
+                    android:textAlignment="textStart"
+                    android:textColor="?attr/text_color"
+                    android:textColorHint="?attr/hint_text_color"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveLink"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginVertical="50dp"
+                android:backgroundTint="?attr/button_color"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="?attr/btn_text_color"
+                app:cornerRadius="35dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.75" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</FrameLayout>

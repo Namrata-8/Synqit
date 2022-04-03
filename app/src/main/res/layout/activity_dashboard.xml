@@ -1,92 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?attr/main_background"
-    tools:context=".ui.DashboardActivity">
+    tools:context=".ui.dashboard.DashboardActivity">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.ui.dashboard.DashboardViewModel" />
+
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="?attr/main_background"
+        android:clickable="false"
+        android:fitsSystemWindows="true"
+        android:focusable="false"
+        android:splitMotionEvents="false"
+        tools:openDrawer="start">
 
-        <com.example.synqit.customeviews.TextViewBold
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/main_background">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.example.synqit.customeviews.TextViewBold
+                    android:id="@+id/heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:text="SYNQIT"
+                    android:textColor="?attr/text_color"
+                    android:textSize="25sp" />
+
+                <ImageButton
+                    android:id="@+id/btnShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:padding="10dp"
+                    android:onClick="@{() -> viewModel.onShareClick()}"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_share"
+                    app:tint="?attr/icon_color" />
+
+                <ImageButton
+                    android:id="@+id/btnEye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:onClick="@{() -> viewModel.onEyeClick()}"
+                    android:layout_toLeftOf="@id/btnShare"
+                    android:padding="10dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_eye"
+                    app:tint="?attr/icon_color" />
+
+                <ImageButton
+                    android:id="@+id/btnUpload"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:onClick="@{() -> viewModel.onUploadClick()}"
+                    android:layout_toLeftOf="@id/btnShare"
+                    android:padding="10dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_upload"
+                    app:tint="?attr/icon_color" />
+
+            </RelativeLayout>
+
+            <fragment
+                android:id="@+id/container"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:defaultNavHost="true"
+                app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+                app:navGraph="@navigation/mobile_navigation">
+
+            </fragment>
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="#1F1E25"
+                android:paddingBottom="15dp"
+                app:itemIconTint="@drawable/bottomnavcolor"
+                app:labelVisibilityMode="unlabeled"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/bottom_nav_menu" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnConnect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="65dp"
+                android:backgroundTint="@color/orange"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.onConnectClick()}"
+                android:src="@drawable/ic_persons"
+                app:borderWidth="0dp"
+                app:elevation="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationView"
+                app:layout_constraintEnd_toEndOf="@+id/bottomNavigationView"
+                app:layout_constraintStart_toStartOf="@+id/bottomNavigationView"
+                app:layout_constraintTop_toTopOf="@id/bottomNavigationView"
+                app:tint="@color/white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="SYNQIT"
-            android:textColor="?attr/text_color"
-            android:textSize="25sp" />
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_marginEnd="-65dp"
+            android:layout_marginRight="-65dp"
+            android:background="?attr/main_background"
+            android:choiceMode="singleChoice"
+            android:fitsSystemWindows="true"
+            android:visibility="visible"
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/btnShare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="20dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_share" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/btnEye"
-            android:layout_toLeftOf="@id/btnShare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_eye"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="20dp"/>
+                <RelativeLayout
+                    android:id="@+id/relativeLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-    </RelativeLayout>
+                    <ImageButton
+                        android:id="@+id/btnBack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginVertical="15dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_arrow_left"
+                        app:tint="?attr/icon_color" />
 
-    <fragment
-        android:id="@+id/container"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        app:navGraph="@navigation/mobile_navigation">
+                </RelativeLayout>
 
-    </fragment>
+                <com.example.synqit.customeviews.TextViewSemiBold
+                    android:id="@+id/textViewSemiBold11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:text="Cards"
+                    android:textColor="?attr/text_color"
+                    android:textSize="25sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+                    app:layout_constraintVertical_bias="0" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="#1F1E25"
-        android:paddingBottom="15dp"
-        app:itemIconTint="@drawable/bottomnavcolor"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCards"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewSemiBold11"
+                    tools:listitem="@layout/row_card" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnScan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="65dp"
-        android:backgroundTint="@color/orange"
-        android:gravity="center"
-        android:src="@drawable/ic_persons"
-        app:borderWidth="0dp"
-        app:elevation="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="@+id/bottomNavigationView"
-        app:layout_constraintStart_toStartOf="@+id/bottomNavigationView"
-        app:layout_constraintTop_toTopOf="@id/bottomNavigationView"
-        app:tint="@color/white" />
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btnAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/text_color"
+                    android:onClick="@{() -> viewModel.onAddCardClick()}"
+                    android:src="@drawable/ic_add_icon"
+                    android:tint="?attr/btn_text_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.95"
+                    app:tint="?attr/btn_text_color" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/text_color"
+                    android:onClick="@{() -> viewModel.onDeleteCardClick()}"
+                    android:src="@drawable/ic_delete"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.95"
+                    app:tint="?attr/btn_text_color" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </RelativeLayout>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</layout>

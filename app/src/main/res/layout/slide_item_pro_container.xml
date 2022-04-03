@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/imageSlide"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="20dp"
+        android:layout_margin="20dp"
+        app:cardElevation="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/bg_card">
+
+            <ImageView
+                android:id="@+id/ivOnBoard"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent="0.5"
+                android:elevation="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_demo_pro"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.example.synqit.customeviews.TextViewBold
+                android:id="@+id/tvOnBoardTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:textAlignment="textStart"
+                android:textColor="?attr/text_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/ivOnBoard"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.87" />
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:id="@+id/tvOnBoardDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Dramatically morph intermandated technologies with customized strategic theme areas. Monotonectally reconceptualize client-focused systems without transparent initiatives. Rapidiously restore clicks-and..."
+                android:textAlignment="textStart"
+                android:textColor="?attr/hint_text_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="20dp"
+                android:lineSpacingExtra="5dp"
+                android:letterSpacing="0.01"
+                app:layout_constraintTop_toBottomOf="@+id/tvOnBoardTitle"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.87" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvOnBoardDesc"
+                app:layout_constraintVertical_bias="0"
+                android:layout_marginTop="25dp">
+
+                <com.example.synqit.customeviews.TextViewSemiBold
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="More Dteails"
+                    android:textColor="?attr/text_color"
+                    android:drawableTint="?attr/icon_color"
+                    android:drawablePadding="10dp"
+                    android:drawableBottom="@drawable/ic_arrow_down"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.fragments.insightfragment.InsightFragmentViewModel" />
+
+    </data>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bgConstraint"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_row_link"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.85">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardView2"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginHorizontal="24dp"
+                        android:layout_marginVertical="10dp"
+                        app:cardCornerRadius="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0">
+
+                        <ImageView
+                            android:id="@+id/ivApp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_facebook"
+                            android:scaleType="fitXY" />
+                    </androidx.cardview.widget.CardView>
+
+                    <com.example.synqit.customeviews.TextViewSemiBold
+                        android:id="@+id/tvAppTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="Facebook"
+                        android:textColor="?attr/text_color"
+                        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+                        app:layout_constraintStart_toEndOf="@+id/cardView2"
+                        app:layout_constraintTop_toTopOf="@+id/cardView2"
+                        app:layout_constraintVertical_bias="0" />
+
+                    <com.example.synqit.customeviews.TextViewRegular
+                        android:id="@+id/tvAppUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="Kashish_426"
+                        android:textColor="?attr/hint_text_color"
+                        android:textSize="12sp"
+                        app:layout_constraintVertical_bias="0"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+                        app:layout_constraintStart_toEndOf="@+id/cardView2"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAppTitle" />
+
+                    <com.example.synqit.customeviews.TextViewBold
+                        android:id="@+id/tvTpas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:text="5 taps"
+                        app:layout_constraintBottom_toBottomOf="@id/cardView2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1"
+                        app:layout_constraintTop_toTopOf="@id/cardView2"
+                        app:layout_constraintVertical_bias="0.5"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </FrameLayout>
+
+</layout>

@@ -21,6 +21,7 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.busine
     private ArrayList<BusinessFragment2ViewModel> arrayList;
     private OnItemClickListener mListener;
     private LayoutInflater layoutInflater;
+    private int checkedPosition = 0;
 
     public BusinessAdapter(Context context, ArrayList<BusinessFragment2ViewModel> arrayList) {
         this.context = context;
@@ -55,20 +56,53 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.busine
     public interface OnItemClickListener {
         void onItemAddClick(int position);
 
-        void onItemRemoveClick(int position);
+        /*void onItemRemoveClick(int position);*/
     }
 
     public class businessViewHolder extends RecyclerView.ViewHolder {
         private ItemBusinessCardBinding itemBusinessCardBinding;
+        private OnItemClickListener listener;
 
         public businessViewHolder(@NonNull ItemBusinessCardBinding itemBusinessCardBinding, final OnItemClickListener listener) {
             super(itemBusinessCardBinding.getRoot());
             this.itemBusinessCardBinding = itemBusinessCardBinding;
+            this.listener = listener;
+
+        }
+
+        public void bind(BusinessFragment2ViewModel fragment2ViewModel) {
+            this.itemBusinessCardBinding.setViewModel(fragment2ViewModel);
+            itemBusinessCardBinding.executePendingBindings();
+
+            if (checkedPosition == -1) {
+                itemBusinessCardBinding.ivCheckIcon.setVisibility(View.GONE);
+                itemBusinessCardBinding.rlCardIndividual.setBackgroundResource(R.drawable.bg_corner_unselected_card);
+            } else {
+                if (checkedPosition == getAdapterPosition()) {
+                    itemBusinessCardBinding.ivCheckIcon.setVisibility(View.VISIBLE);
+                    itemBusinessCardBinding.rlCardIndividual.setBackgroundResource(R.drawable.bg_corner_selected_card);
+                } else {
+                    itemBusinessCardBinding.ivCheckIcon.setVisibility(View.GONE);
+                    itemBusinessCardBinding.rlCardIndividual.setBackgroundResource(R.drawable.bg_corner_unselected_card);
+                }
+            }
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (itemBusinessCardBinding.ivCheckIcon.getVisibility() == View.VISIBLE) {
+                    itemBusinessCardBinding.ivCheckIcon.setVisibility(View.VISIBLE);
+                    itemBusinessCardBinding.rlCardIndividual.setBackgroundResource(R.drawable.bg_corner_selected_card);
+                    if (checkedPosition != getAdapterPosition()) {
+                        notifyItemChanged(checkedPosition);
+                        checkedPosition = getAdapterPosition();
+                        if (listener != null) {
+                            int position = getAdapterPosition();
+                            if (position != RecyclerView.NO_POSITION) {
+                                listener.onItemAddClick(position);
+                            }
+                        }
+                    }
+                    /*if (itemBusinessCardBinding.ivCheckIcon.getVisibility() == View.VISIBLE) {
                         itemBusinessCardBinding.ivCheckIcon.setVisibility(View.GONE);
                         itemBusinessCardBinding.rlCardIndividual.setBackgroundResource(R.drawable.bg_corner_unselected_card);
                         if (listener != null) {
@@ -86,14 +120,9 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.busine
                                 listener.onItemAddClick(position);
                             }
                         }
-                    }
+                    }*/
                 }
             });
-        }
-
-        public void bind(BusinessFragment2ViewModel fragment2ViewModel) {
-            this.itemBusinessCardBinding.setViewModel(fragment2ViewModel);
-            itemBusinessCardBinding.executePendingBindings();
         }
 
         public ItemBusinessCardBinding getItemBusinessCardBinding() {

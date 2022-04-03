@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.editprofile.EditProfileActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.ui.editprofile.EditProfileViewModel" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/main_background">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="15dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="@{() -> viewModel.onBackClick()}"
+                    android:src="@drawable/ic_arrow_left"
+                    app:tint="?attr/icon_color" />
+
+            </RelativeLayout>
+
+            <com.example.synqit.customeviews.TextViewBold
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Edit Profile"
+                android:textColor="?attr/text_color"
+                android:textSize="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                android:layout_marginStart="25dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.75" />
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/bg_et_bio"
+                android:padding="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.8">
+
+                <EditText
+                    android:id="@+id/etEnterBio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:hint="Enter Bio"
+                    android:padding="10dp"
+                    android:textAlignment="textStart"
+                    android:textColor="?attr/text_color"
+                    android:textColorHint="?attr/hint_text_color"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:id="@+id/tvMaxChar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Max 30 Characters"
+                android:textColor="?attr/hint_text_color"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/relativeLayout2"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toStartOf="@+id/relativeLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+                app:layout_constraintVertical_bias="0" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:cardCornerRadius="13dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMaxChar"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.8">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_et_bio">
+
+                    <com.example.synqit.customeviews.TextViewRegular
+                        android:id="@+id/textViewRegular4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:text="Custom Themes"
+                        android:textColor="?attr/text_color"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0" />
+
+                    <com.example.synqit.customeviews.TextViewRegular
+                        android:id="@+id/tvProBusiness"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/circle"
+                        android:backgroundTint="?attr/text_color"
+                        android:gravity="center"
+                        android:text="Pro"
+                        android:textColor="?attr/btn_text_color"
+                        android:textSize="11sp"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="@+id/textViewRegular4"
+                        app:layout_constraintStart_toEndOf="@+id/textViewRegular4"
+                        app:layout_constraintTop_toTopOf="@+id/textViewRegular4" />
+
+                    <ImageButton
+                        android:id="@+id/btnEye"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_eye"
+                        android:onClick="@{() -> viewModel.onEyeClick()}"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvProBusiness"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1"
+                        app:layout_constraintStart_toEndOf="@+id/tvProBusiness"
+                        app:layout_constraintTop_toTopOf="@+id/tvProBusiness"
+                        app:tint="?attr/icon_color" />
+
+                    <HorizontalScrollView
+                        android:id="@+id/scrollView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fillViewport="true"
+                        android:overScrollMode="never"
+                        android:scrollbars="none"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/btnEye"
+                        app:layout_constraintStart_toStartOf="@+id/textViewRegular4"
+                        app:layout_constraintTop_toBottomOf="@+id/tvProBusiness"
+                        app:layout_constraintVertical_bias="0">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="8">
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <RelativeLayout
+                                    android:id="@+id/rlBlack"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="#333333"
+                                    android:onClick="@{() -> viewModel.onBlackClick()}">
+
+                                    <ImageView
+                                        android:id="@+id/ivCheckBlack"
+                                        android:layout_width="10dp"
+                                        android:layout_height="10dp"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/ic_check_sign"
+                                        app:tint="@color/white" />
+
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <RelativeLayout
+                                    android:id="@+id/rlBlue"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="#5D5FEE"
+                                    android:onClick="@{() -> viewModel.onBlueClick()}">
+
+                                    <ImageView
+                                        android:id="@+id/ivCheckBlue"
+                                        android:layout_width="10dp"
+                                        android:layout_height="10dp"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/ic_check_sign"
+                                        android:visibility="gone"
+                                        app:tint="@color/white" />
+
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <RelativeLayout
+                                    android:id="@+id/rlPink"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="#EE5DA8"
+                                    android:onClick="@{() -> viewModel.onPinkClick()}">
+
+                                    <ImageView
+                                        android:id="@+id/ivCheckPink"
+                                        android:layout_width="10dp"
+                                        android:layout_height="10dp"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/ic_check_sign"
+                                        android:visibility="gone"
+                                        app:tint="@color/white" />
+
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <RelativeLayout
+                                    android:id="@+id/rlRed"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="#EB5757"
+                                    android:onClick="@{() -> viewModel.onRedClick()}">
+
+                                    <ImageView
+                                        android:id="@+id/ivCheckRed"
+                                        android:layout_width="10dp"
+                                        android:layout_height="10dp"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/ic_check_sign"
+                                        android:visibility="gone"
+                                        app:tint="@color/white" />
+
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <RelativeLayout
+                                    android:id="@+id/rlOrange"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="#F19949"
+                                    android:onClick="@{() -> viewModel.onOrangeClick()}">
+
+                                    <ImageView
+                                        android:id="@+id/ivCheckOrange"
+                                        android:layout_width="10dp"
+                                        android:layout_height="10dp"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/ic_check_sign"
+                                        android:visibility="gone"
+                                        app:tint="@color/white" />
+
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <RelativeLayout
+                                    android:id="@+id/rlYello"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="#F1C84b"
+                                    android:onClick="@{() -> viewModel.onYellowClick()}">
+
+                                    <ImageView
+                                        android:id="@+id/ivCheckYellow"
+                                        android:layout_width="10dp"
+                                        android:layout_height="10dp"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/ic_check_sign"
+                                        android:visibility="gone"
+                                        app:tint="@color/white" />
+
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rlGreen"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <RelativeLayout
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="#27AD5F"
+                                    android:onClick="@{() -> viewModel.onGreenClick()}">
+
+                                    <ImageView
+                                        android:id="@+id/ivCheckGreen"
+                                        android:layout_width="10dp"
+                                        android:layout_height="10dp"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/ic_check_sign"
+                                        android:visibility="gone"
+                                        app:tint="@color/white" />
+
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <RelativeLayout
+                                    android:id="@+id/rlWhite"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/circle_white"
+                                    android:onClick="@{() -> viewModel.onWhiteClick()}">
+
+                                    <ImageView
+                                        android:id="@+id/ivCheckWhite"
+                                        android:layout_width="10dp"
+                                        android:layout_height="10dp"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/ic_check_sign"
+                                        android:visibility="gone"
+                                        app:tint="@color/black" />
+
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+
+                    <com.example.synqit.customeviews.TextViewRegular
+                        android:id="@+id/textViewRegular5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Custom Themes"
+                        android:textColor="?attr/text_color"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="@id/switch_button"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="@+id/textViewRegular4"
+                        app:layout_constraintTop_toTopOf="@+id/switch_button" />
+
+                    <com.suke.widget.SwitchButton
+                        android:id="@+id/switch_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="25dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/btnEye"
+                        app:layout_constraintHorizontal_bias="1"
+                        app:layout_constraintStart_toEndOf="@+id/textViewRegular5"
+                        app:layout_constraintTop_toBottomOf="@+id/scrollView"
+                        app:sb_border_width="2dp"
+                        app:sb_checked="true"
+                        app:sb_checked_color="@color/orange"
+                        app:sb_show_indicator="false"
+                        app:sb_uncheck_color="?attr/switch_unchecked" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFinish"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginVertical="50dp"
+                android:backgroundTint="?attr/button_color"
+                android:elevation="20dp"
+                android:outlineAmbientShadowColor="#9C60FF"
+                android:outlineSpotShadowColor="#9C60FF"
+                android:shadowColor="#9C60FF"
+                android:text="Save Changes"
+                android:textAllCaps="false"
+                android:textColor="?attr/btn_text_color"
+                app:cornerRadius="35dp"
+                app:elevation="20dp"
+                android:onClick="@{() -> viewModel.onSaveChangeClick()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView5"
+                app:layout_constraintVertical_bias="1"
+                app:layout_constraintWidth_percent="0.75" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

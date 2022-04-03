@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.account.AccountActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.ui.account.AccountViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/main_background">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="15dp"
+                android:background="@android:color/transparent"
+                android:onClick="@{() -> viewModel.onBackClick()}"
+                android:src="@drawable/ic_arrow_left"
+                app:tint="?attr/icon_color" />
+
+            <com.example.synqit.customeviews.TextViewRegular
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginVertical="15dp"
+                android:layout_marginEnd="25dp"
+                android:background="@drawable/bg_add_link_btn"
+                android:drawableEnd="@drawable/ic_yes_circle"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:paddingVertical="3dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="5dp"
+                android:text="Verified"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
+
+        <com.example.synqit.customeviews.TextViewBold
+            android:id="@+id/textViewSemiBold11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="Account"
+            android:textColor="?attr/text_color"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            app:layout_constraintVertical_bias="0" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSemiBold11"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageButton
+                android:id="@+id/ibName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_full_name"
+                app:tint="?attr/icon_color" />
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/ibName"
+                android:background="@android:color/transparent"
+                android:hint="Name"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textAlignment="textStart"
+                android:textColor="?attr/text_color"
+                android:textColorHint="?attr/hint_text_color"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageButton
+                android:id="@+id/ibEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_outline_email_24"
+                app:tint="?attr/icon_color" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/ibEmail"
+                android:background="@android:color/transparent"
+                android:hint="Email Address"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textAlignment="textStart"
+                android:textColor="?attr/text_color"
+                android:textColorHint="?attr/hint_text_color"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlcompany"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageButton
+                android:id="@+id/ibCompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_company"
+                app:tint="?attr/icon_color" />
+
+            <EditText
+                android:id="@+id/etCompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/ibCompany"
+                android:background="@android:color/transparent"
+                android:hint="Company Name"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textAlignment="textStart"
+                android:textColor="?attr/text_color"
+                android:textColorHint="?attr/hint_text_color"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlUserName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rlcompany"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageButton
+                android:id="@+id/ibUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_username"
+                app:tint="?attr/icon_color" />
+
+            <EditText
+                android:id="@+id/etUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/ibUserName"
+                android:background="@android:color/transparent"
+                android:hint="Username"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textAlignment="textStart"
+                android:textColor="?attr/text_color"
+                android:textColorHint="?attr/hint_text_color"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlGender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rlUserName"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageButton
+                android:id="@+id/ibGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_gender"
+                app:tint="?attr/icon_color" />
+
+            <EditText
+                android:id="@+id/etGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/ibGender"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:drawableEnd="@drawable/ic_arrow_down"
+                android:drawableTint="?attr/icon_color"
+                android:editable="false"
+                android:focusable="false"
+                android:hint="Gender"
+                android:onClick="@{() -> viewModel.onGenderClick()}"
+                android:padding="10dp"
+                android:textAlignment="textStart"
+                android:textColor="?attr/text_color"
+                android:textColorHint="?attr/hint_text_color"
+                android:textSize="14sp"
+                tools:ignore="Deprecated" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlDob"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:padding="15dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rlGender"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageButton
+                android:id="@+id/ibDob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_calender"
+                app:tint="?attr/icon_color" />
+
+            <EditText
+                android:id="@+id/etDob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/ibDob"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:editable="false"
+                android:focusable="false"
+                android:onClick="@{() -> viewModel.onDateClick()}"
+                android:hint="Date of birth"
+                android:padding="10dp"
+                android:textAlignment="textStart"
+                android:textColor="?attr/text_color"
+                android:textColorHint="?attr/hint_text_color"
+                android:textSize="14sp"
+                tools:ignore="Deprecated" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_background"
+            android:padding="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rlDob"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/countryCodePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_country_code_picker"
+                android:gravity="center_vertical"
+                android:padding="3dp"
+                app:ccpDialog_searchEditTextTint="?attr/text_color"
+                app:ccpDialog_textColor="?attr/text_color"
+                app:ccp_autoDetectCountry="false"
+                app:ccp_contentColor="?attr/text_color"
+                app:ccp_countryAutoDetectionPref="LOCALE_NETWORK_SIM"
+                app:ccp_defaultPhoneCode="91"
+                app:ccp_showFlag="true"
+                app:ccp_showFullName="false"
+                app:ccp_showNameCode="false"
+                app:ccp_textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/countryCodePicker"
+                android:background="@android:color/transparent"
+                android:hint="Mobile Number"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textAlignment="textStart"
+                android:textColor="?attr/text_color"
+                android:textColorHint="?attr/hint_text_color"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:padding="15dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout6"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageButton
+                android:id="@+id/ibCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_location"
+                app:tint="?attr/icon_color" />
+
+            <EditText
+                android:id="@+id/etCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/ibCity"
+                android:background="@android:color/transparent"
+                android:hint="City"
+                android:padding="10dp"
+                android:textAlignment="textStart"
+                android:textColor="?attr/text_color"
+                android:textColorHint="?attr/hint_text_color"
+                android:textSize="14sp"
+                tools:ignore="Deprecated" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:padding="15dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout7"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8">
+
+            <ImageButton
+                android:id="@+id/ibCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_location"
+                app:tint="?attr/icon_color" />
+
+            <EditText
+                android:id="@+id/etCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/ibCountry"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:drawableEnd="@drawable/ic_arrow_down"
+                android:drawableTint="?attr/icon_color"
+                android:editable="false"
+                android:focusable="false"
+                android:hint="Country"
+                android:onClick="@{() -> viewModel.onCountryClick()}"
+                android:padding="10dp"
+                android:textAlignment="textStart"
+                android:textColor="?attr/text_color"
+                android:textColorHint="?attr/hint_text_color"
+                android:textSize="14sp"
+                tools:ignore="Deprecated" />
+
+        </RelativeLayout>
+
+        <!--<RelativeLayout
+            android:id="@+id/rShop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout8"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.8"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawableTint="?attr/icon_color"
+                android:text="Payment Settings"
+                android:textColor="?attr/text_color" />
+
+        </RelativeLayout>-->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContinue"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginVertical="50dp"
+            android:backgroundTint="?attr/button_color"
+            android:text="Update Profile"
+            android:textAllCaps="false"
+            android:textColor="?attr/btn_text_color"
+            app:cornerRadius="35dp"
+            android:onClick="@{() -> viewModel.onContinueClick()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout8"
+            app:layout_constraintVertical_bias="0"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="25dp"
+            app:layout_constraintWidth_percent="0.75" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

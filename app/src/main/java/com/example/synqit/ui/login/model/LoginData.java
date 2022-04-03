@@ -1,10 +1,15 @@
 package com.example.synqit.ui.login.model;
 
+import com.example.synqit.ui.dashboard.model.CardData;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginData {
+public class LoginData{
+    @SerializedName("basicRegistratinUID")
+    private String basicRegistratinUID;
     @SerializedName("userUID")
-    private String userUID;
+    private String userID;
+    @SerializedName("parentUserID")
+    private String parentUserID;
     @SerializedName("email")
     private String email;
     @SerializedName("password")
@@ -31,9 +36,47 @@ public class LoginData {
     private boolean isPrivate;
     @SerializedName("isFullRegistered")
     private boolean isFullRegistered;
+    @SerializedName("isDirect")
+    private boolean isDirect;
+    @SerializedName("profileName")
+    private String profileName;
+    @SerializedName("bio")
+    private String bio;
+    @SerializedName("themeColor")
+    private String themeColor;
+    @SerializedName("isIconColor")
+    private boolean isIconColor;
 
-    public String getUserUID() {
-        return userUID;
+    public boolean isIconColor() {
+        return isIconColor;
+    }
+
+    public boolean isDirect() {
+        return isDirect;
+    }
+
+    public String getProfileName() {
+        return profileName;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public String getThemeColor() {
+        return themeColor;
+    }
+
+    public String getBasicRegistratinUID() {
+        return basicRegistratinUID;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public String getParentUserID() {
+        return parentUserID;
     }
 
     public String getEmail() {

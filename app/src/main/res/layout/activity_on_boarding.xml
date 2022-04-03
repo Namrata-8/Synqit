@@ -4,16 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.OnBoardingActivity">
+    tools:context=".ui.OnBoardingActivity"
+    android:background="#71DBDB">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerImageSlider"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingStart="50dp"
-        android:paddingEnd="50dp"
-        app:layout_constraintHeight_percent="0.7"
-        app:layout_constraintVertical_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,18 +20,16 @@
         android:id="@+id/dots_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:dotsColor="@color/grey_600"
-        app:dotsCornerRadius="8dp"
+        app:dotsColor="@color/white"
         app:dotsSize="10dp"
         app:dotsSpacing="4dp"
         app:dotsWidthFactor="3"
-        app:selectedDotColor="?attr/text_color"
-        app:progressMode="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnGetStarted"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintTop_toBottomOf="@+id/viewPagerImageSlider" />
+        app:progressMode="true"
+        app:selectedDotColor="?attr/text_color"
+        android:layout_marginBottom="25dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="0dp"
@@ -48,9 +43,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dots_indicator"
-        app:layout_constraintWidth_percent="0.7"
-        app:layout_constraintVertical_bias="0"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginBottom="25dp"
+        app:layout_constraintWidth_percent="0.7"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

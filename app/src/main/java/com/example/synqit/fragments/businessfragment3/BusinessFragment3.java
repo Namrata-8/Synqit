@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -41,9 +43,11 @@ public class BusinessFragment3 extends Fragment implements BusinessFragment3Navi
     private FragmentBusiness3Binding fragmentBusiness3Binding;
     private BusinessFragment3ViewModel fragment3ViewModel;
     private RegisterAsActivity registerAsActivity;
+    private CountryAdapter countryAdapter;
     private String companyName = "";
     private String fullName = "";
     private String countryName = "";
+    private String city = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,7 +77,7 @@ public class BusinessFragment3 extends Fragment implements BusinessFragment3Navi
         fragment3ViewModel.getCountryList(countryList).observe(getViewLifecycleOwner(), new Observer<ArrayList<BusinessFragment3ViewModel>>() {
             @Override
             public void onChanged(ArrayList<BusinessFragment3ViewModel> businessFragment3ViewModels) {
-                CountryAdapter countryAdapter = new CountryAdapter(getActivity(), businessFragment3ViewModels);
+                countryAdapter = new CountryAdapter(getActivity(), businessFragment3ViewModels);
                 rvCountry.setAdapter(countryAdapter);
 
                 countryAdapter.setOnItemClickListener(new CountryAdapter.OnItemClickListener() {
@@ -83,6 +87,22 @@ public class BusinessFragment3 extends Fragment implements BusinessFragment3Navi
                         dialog.dismiss();
                     }
                 });
+            }
+        });
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                countryAdapter.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
@@ -99,6 +119,7 @@ public class BusinessFragment3 extends Fragment implements BusinessFragment3Navi
 
             companyName = fragmentBusiness3Binding.etCompName.getText().toString();
             fullName = fragmentBusiness3Binding.etFullName.getText().toString();
+            city = fragmentBusiness3Binding.etCity.getText().toString();
             countryName = fragmentBusiness3Binding.etCountry.getText().toString();
 
             if (fragmentBusiness3Binding.etCompName.getText().toString().length() == 0){
@@ -107,17 +128,21 @@ public class BusinessFragment3 extends Fragment implements BusinessFragment3Navi
             }else if (fragmentBusiness3Binding.etFullName.getText().toString().length() == 0){
                 fragmentBusiness3Binding.etFullName.setError(getString(R.string.error_full_name));
                 fragmentBusiness3Binding.etFullName.requestFocus();
+            }else if (fragmentBusiness3Binding.etCity.getText().toString().length() == 0){
+                fragmentBusiness3Binding.etCity.setError(getString(R.string.error_city_name));
+                fragmentBusiness3Binding.etCity.requestFocus();
             }else if (fragmentBusiness3Binding.etCountry.getText().toString().length() == 0){
                 Toast.makeText(getActivity(), "Please Select Country", Toast.LENGTH_SHORT).show();
             }else {
                 SessionManager.writeString(getActivity(), SessionManager.COMPANY_NAME, companyName);
                 SessionManager.writeString(getActivity(), SessionManager.FULL_NAME, fullName);
+                SessionManager.writeString(getActivity(), SessionManager.CITY, city);
                 SessionManager.writeString(getActivity(), SessionManager.COUNTRY_NAME, countryName);
                 Gson gson = new Gson();
-                String[] selectedBusiness = gson.fromJson(SessionManager.readString(getActivity(), SessionManager.SELECTED_BUSINESSES_IDS, null), String[].class);
+                String selectedBusiness = SessionManager.readString(getActivity(), SessionManager.SELECTED_BUSINESSES_IDS, null);
 
                 if (null != selectedBusiness) {
-                    Log.e("SelectedBusiness", selectedBusiness.length + "\n" + selectedBusiness[0]);
+                    Log.e("SelectedBusiness",  selectedBusiness);
                     registerAsActivity.setPagerFragment(3);
                 } else {
                     Toast.makeText(getActivity(), "Please select business", Toast.LENGTH_SHORT).show();

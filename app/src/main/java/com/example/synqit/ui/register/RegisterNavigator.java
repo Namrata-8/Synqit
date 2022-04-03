@@ -7,4 +7,8 @@ public interface RegisterNavigator {
     void goToOtpVerification();
 
     void goToBack();
+
+    void onApple();
+    void onGoogle();
+    void onFacebook();
 }

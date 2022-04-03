@@ -31,12 +31,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="25dp"
-                android:layout_marginBottom="25dp"
-                android:onClick="@{() -> viewModel.onBackClick()}"
+                android:layout_margin="15dp"
                 android:background="@android:color/transparent"
+                android:onClick="@{() -> viewModel.onBackClick()}"
                 android:src="@drawable/ic_arrow_left"
                 app:tint="?attr/icon_color" />
 
@@ -73,264 +70,44 @@
             app:layout_constraintVertical_bias=".8"
             app:tint="?attr/icon_color" />
 
-        <ScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:fillViewport="true"
-            android:overScrollMode="never"
-            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:layout_constraintVertical_bias="0">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPlans"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_plans"
+                app:layout_constraintBottom_toTopOf="@+id/btnContinue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.coordinatorlayout.widget.CoordinatorLayout
-                    android:id="@+id/relativeLayout15"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0"
-                    app:layout_constraintWidth_percent="0.9">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnContinue"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginVertical="25dp"
+                android:backgroundTint="?attr/button_color"
+                android:onClick="@{() -> viewModel.onContinueClick()}"
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:textColor="?attr/btn_text_color"
+                app:cornerRadius="35dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent="0.75" />
 
-                    <ImageView
-                        android:id="@+id/ivCheckIconMonthly"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_above="@id/cardBusiness"
-                        android:layout_alignEnd="@+id/cardBusiness"
-                        android:background="@drawable/ic_check"
-                        android:elevation="12.1dp"
-                        android:gravity="center"
-                        android:textColor="?attr/text_color"
-                        android:textSize="12sp"
-                        android:visibility="visible"
-                        app:layout_anchor="@id/cardMonthly"
-                        app:layout_anchorGravity="end|bottom"
-                        app:tint="?attr/icon_color" />
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardMonthly"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:onClick="@{() -> viewModel.onMonthlyClick()}"
-                        android:layout_marginHorizontal="15dp"
-                        android:layout_marginVertical="25dp"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="12dp">
-
-                        <RelativeLayout
-                            android:id="@+id/rlCardMonthly"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/bg_corner_selected_card_pro">
-
-                            <com.example.synqit.customeviews.TextViewRegular
-                                android:id="@+id/tvDiscountMonthly"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentTop="true"
-                                android:layout_alignParentEnd="true"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="15dp"
-                                android:layout_marginEnd="15dp"
-                                android:layout_marginBottom="15dp"
-                                android:background="@drawable/bg_discount_selected"
-                                android:paddingHorizontal="12dp"
-                                android:paddingVertical="8dp"
-                                android:text="30% (Recommend)"
-                                android:textColor="?attr/text_color"
-                                android:textSize="10sp" />
-
-                            <com.example.synqit.customeviews.TextViewBold
-                                android:id="@+id/tvPlanTime"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvDiscountMonthly"
-                                android:layout_centerHorizontal="true"
-                                android:text="Monthly"
-                                android:textColor="?attr/text_color"
-                                android:textSize="20sp" />
-
-                            <com.example.synqit.customeviews.TextViewRegular
-                                android:id="@+id/tvPlanTime2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvPlanTime"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="5dp"
-                                android:text="Build Every Month"
-                                android:textColor="?attr/text_color" />
-
-                            <com.example.synqit.customeviews.TextViewBold
-                                android:id="@+id/tvPlanAmount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvPlanTime2"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="15dp"
-                                android:text="₹ 49.99"
-                                android:textColor="#FB6C05"
-                                android:textSize="22sp" />
-
-                            <com.example.synqit.customeviews.TextViewRegular
-                                android:id="@+id/tvPlanTrial"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvPlanAmount"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="25dp"
-                                android:layout_marginBottom="20dp"
-                                android:text="1 Month Free Trial"
-                                android:textColor="?attr/text_color" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-                <androidx.coordinatorlayout.widget.CoordinatorLayout
-                    android:id="@+id/relativeLayout16"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/relativeLayout15"
-                    app:layout_constraintVertical_bias="0"
-                    app:layout_constraintWidth_percent="0.9">
-
-                    <ImageView
-                        android:id="@+id/ivCheckIconYearly"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_above="@id/cardBusiness"
-                        android:layout_alignEnd="@+id/cardBusiness"
-                        android:background="@drawable/ic_check"
-                        android:elevation="12.1dp"
-                        android:gravity="center"
-                        android:textColor="?attr/text_color"
-                        android:textSize="12sp"
-                        android:visibility="gone"
-                        app:layout_anchor="@id/cardYearly"
-                        app:layout_anchorGravity="end|bottom"
-                        app:tint="?attr/icon_color" />
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardYearly"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:onClick="@{() -> viewModel.onYearlyClick()}"
-                        android:layout_marginHorizontal="15dp"
-                        android:layout_marginVertical="25dp"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="12dp">
-
-                        <RelativeLayout
-                            android:id="@+id/rlCardYearly"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/bg_corner_unselected_card_pro">
-
-                            <com.example.synqit.customeviews.TextViewRegular
-                                android:id="@+id/tvDiscountYearly"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentTop="true"
-                                android:layout_alignParentEnd="true"
-                                android:layout_marginStart="15dp"
-                                android:layout_marginTop="15dp"
-                                android:layout_marginEnd="15dp"
-                                android:layout_marginBottom="15dp"
-                                android:background="@drawable/bg_discount_unselected"
-                                android:paddingHorizontal="12dp"
-                                android:paddingVertical="8dp"
-                                android:text="-45% (Exclusive)"
-                                android:textColor="?attr/text_color"
-                                android:textSize="10sp" />
-
-                            <com.example.synqit.customeviews.TextViewBold
-                                android:id="@+id/tvPlanTimeYearly"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvDiscountYearly"
-                                android:layout_centerHorizontal="true"
-                                android:text="Yearly"
-                                android:textColor="?attr/text_color"
-                                android:textSize="20sp" />
-
-                            <com.example.synqit.customeviews.TextViewRegular
-                                android:id="@+id/tvPlanTime2Yearly"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvPlanTimeYearly"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="5dp"
-                                android:text="Billed annually"
-                                android:textColor="?attr/text_color" />
-
-                            <com.example.synqit.customeviews.TextViewBold
-                                android:id="@+id/tvPlanAmountYearly"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvPlanTime2Yearly"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="15dp"
-                                android:text="₹ 399.99"
-                                android:textColor="#FB6C05"
-                                android:textSize="22sp" />
-
-                            <com.example.synqit.customeviews.TextViewRegular
-                                android:id="@+id/tvPlanTrialYearly"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvPlanAmountYearly"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="25dp"
-                                android:layout_marginBottom="20dp"
-                                android:text="1 Month Free Trial"
-                                android:textColor="?attr/text_color" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnContinue"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_marginVertical="25dp"
-                    android:backgroundTint="?attr/button_color"
-                    android:text="Continue"
-                    android:onClick="@{() -> viewModel.onContinueClick()}"
-                    android:textAllCaps="false"
-                    android:textColor="?attr/btn_text_color"
-                    app:cornerRadius="35dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/relativeLayout16"
-                    app:layout_constraintVertical_bias="0"
-                    app:layout_constraintWidth_percent="0.75" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

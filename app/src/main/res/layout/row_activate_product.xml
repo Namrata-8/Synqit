@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.ui.activateproduct.ActivateProductViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardIndividual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:id="@+id/rlCardIndividual"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/bg_corner_unselected_card">
+
+                    <ImageView
+                        android:id="@+id/ivIconBusiness"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        app:imageUrl="@{viewModel.productImage}"
+                        app:tint="?attr/icon_color" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        <com.example.synqit.customeviews.TextViewSemiBold
+            android:id="@+id/tvNameBusiness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="15dp"
+            android:text="@{viewModel.activateProductData.title}"
+            android:textColor="?attr/text_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/cardIndividual"
+            app:layout_constraintStart_toStartOf="@+id/cardIndividual"
+            app:layout_constraintTop_toBottomOf="@id/cardIndividual" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

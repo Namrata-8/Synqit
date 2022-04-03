@@ -18,7 +18,6 @@ import android.os.Bundle;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -30,35 +29,33 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.synqit.BuildConfig;
 import com.example.synqit.R;
-import com.example.synqit.customeviews.TextViewSemiBold;
-import com.example.synqit.databinding.FragmentIndividual2Binding;
 import com.example.synqit.databinding.FragmentIndividual3Binding;
 import com.example.synqit.fragments.businessfragment4.BusinessFragment4Navigator;
 import com.example.synqit.fragments.businessfragment4.BusinessFragment4ViewModel;
-import com.example.synqit.fragments.businessfragment4.model.AddLogoResponse;
-import com.example.synqit.fragments.businessfragment4.model.UploadCoverPhotoResponse;
-import com.example.synqit.ui.DashboardActivity;
+import com.example.synqit.fragments.businessfragment4.model.AddImageResponse;
+import com.example.synqit.fragments.businessfragment4.model.InsertCardResponse;
+import com.example.synqit.fragments.businessfragment4.model.ParamInsertCard;
+import com.example.synqit.ui.RegisterAsActivity;
+import com.example.synqit.ui.dashboard.DashboardActivity;
+import com.example.synqit.ui.dashboard.model.CardData;
+import com.example.synqit.ui.login.LoginActivity;
 import com.example.synqit.ui.proupgrade.ProUpgradeActivity;
 import com.example.synqit.ui.proupgrade.model.FullRegisterResponse;
 import com.example.synqit.ui.proupgrade.model.ParamFullRegister;
 import com.example.synqit.utils.SessionManager;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -71,11 +68,16 @@ public class IndividualFragment3 extends Fragment implements BusinessFragment4Na
     private String mCurrentPhotoPathOrdinance;
     private Bitmap Profilebitmap = null;
     private boolean isLogoImg = false;
+    private boolean isAddNewCard = false;
 
     private String selectedLogoImgPath = "";
     private String selectedCoverImgPath = "";
     private File selectedLogoImgFile;
     private File selectedCoverImgFile;
+    private RegisterAsActivity registerAsActivity;
+    private String qrCode = "";
+    private boolean isPrivate = false;
+    private boolean isDirect = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,6 +85,7 @@ public class IndividualFragment3 extends Fragment implements BusinessFragment4Na
         fragmentIndividual3Binding = DataBindingUtil.inflate(inflater, R.layout.fragment_individual3, container, false);
         fragmentIndividual3Binding.setViewModel(new BusinessFragment4ViewModel(this));
         fragmentIndividual3Binding.executePendingBindings();
+        registerAsActivity = (RegisterAsActivity) getActivity();
         initViewModel();
 
         return fragmentIndividual3Binding.getRoot();
@@ -91,45 +94,94 @@ public class IndividualFragment3 extends Fragment implements BusinessFragment4Na
     private void initViewModel() {
         fragment4ViewModel = new ViewModelProvider(this).get(BusinessFragment4ViewModel.class);
 
-        fragment4ViewModel.addLogoApi().observe(getViewLifecycleOwner(), new Observer<AddLogoResponse>() {
+        fragment4ViewModel.addLogoApi().observe(getViewLifecycleOwner(), new Observer<AddImageResponse>() {
             @Override
-            public void onChanged(AddLogoResponse addLogoResponse) {
-                if (addLogoResponse != null){
-                    if (!addLogoResponse.isSuccess()){
-                        SessionManager.writeString(getActivity(), SessionManager.LOGO_FILE_URL, addLogoResponse.getFileUrl());
-                        if (selectedCoverImgFile.exists() && !SessionManager.readString(getActivity(), SessionManager.BASIC_REGISTER_ID, "").equals("")){
-                            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), selectedCoverImgFile);
-                            MultipartBody.Part body = MultipartBody.Part.createFormData("Cover", selectedCoverImgFile.getName(), requestFile);
-                            RequestBody userId = RequestBody.create(MediaType.parse("multipart/form-data"), SessionManager.readString(getActivity(), SessionManager.BASIC_REGISTER_ID, ""));
+            public void onChanged(AddImageResponse addImageResponse) {
+                if (addImageResponse != null){
+                    if (addImageResponse.isSuccess()){
+                        SessionManager.writeString(getActivity(), SessionManager.LOGO_FILE_URL, addImageResponse.getData().getFileUrl());
+                        if (selectedCoverImgPath.length() != 0) {
+                            if (selectedCoverImgFile.exists() && !SessionManager.readString(getActivity(), SessionManager.BR_basicRegistratinUID, "").equals("")) {
+                                RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), selectedCoverImgFile);
+                                MultipartBody.Part body = MultipartBody.Part.createFormData("Image", selectedCoverImgFile.getName(), requestFile);
+                                RequestBody userId = RequestBody.create(MediaType.parse("multipart/form-data"), SessionManager.readString(getActivity(), SessionManager.BR_basicRegistratinUID, ""));
 
-                            fragment4ViewModel.uploadCoverPhoto(body, userId);
+                                fragment4ViewModel.uploadCoverPhoto(body, userId, getActivity());
+                            }
+                        }else {
+                            if (registerAsActivity.isAddNewCard()){
+                                if (new Gson().fromJson(SessionManager.readSelectedCardData(getActivity(), SessionManager.Selected_Card_Data, ""), CardData.class).getQrCode() != null) {
+                                    qrCode = new Gson().fromJson(SessionManager.readSelectedCardData(getActivity(), SessionManager.Selected_Card_Data, ""), CardData.class).getQrCode();
+                                }
+                                isPrivate = new Gson().fromJson(SessionManager.readSelectedCardData(getActivity(), SessionManager.Selected_Card_Data, ""), CardData.class).isPrivate();
+                                isDirect = new Gson().fromJson(SessionManager.readSelectedCardData(getActivity(), SessionManager.Selected_Card_Data, ""), CardData.class).isDirect();
+
+                                ParamInsertCard paramInsertCard = new ParamInsertCard(SessionManager.readString(getActivity(), SessionManager.parentUserID, ""),false,
+                                        SessionManager.readString(getActivity(), SessionManager.COMPANY_NAME, ""),
+                                        SessionManager.readString(getActivity(), SessionManager.DOB, ""),
+                                        SessionManager.readString(getActivity(), SessionManager.GENDER, ""),
+                                        0, SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, ""),
+                                        SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, ""),
+                                        0,qrCode, SessionManager.readString(getActivity(), SessionManager.COUNTRY_NAME, ""),
+                                        SessionManager.readString(getActivity(), SessionManager.CITY, ""),
+                                        isPrivate, isDirect, SessionManager.readString(getActivity(), SessionManager.FULL_NAME, ""),"","",true);
+
+                                fragment4ViewModel.insertCard(paramInsertCard, getActivity());
+                            }else {
+                                ParamFullRegister paramFullRegister = new ParamFullRegister(SessionManager.readString(getActivity(), SessionManager.BR_basicRegistratinUID, ""),
+                                        false, SessionManager.readString(getActivity(), SessionManager.COMPANY_NAME, ""),
+                                        SessionManager.readString(getActivity(), SessionManager.DOB, ""),
+                                        SessionManager.readString(getActivity(), SessionManager.GENDER, ""),
+                                        "0", SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, ""),
+                                        SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, ""),
+                                        SessionManager.readString(getActivity(), SessionManager.CITY, ""),
+                                        SessionManager.readString(getActivity(), SessionManager.COUNTRY_NAME, ""), 0);
+
+                                fragment4ViewModel.fullRegistration(paramFullRegister, getActivity());
+                            }
                         }
                     }
                 }
             }
         });
 
-        fragment4ViewModel.uploadCoverPhotoApi().observe(getViewLifecycleOwner(), new Observer<UploadCoverPhotoResponse>() {
+        fragment4ViewModel.uploadCoverPhotoApi().observe(getViewLifecycleOwner(), new Observer<AddImageResponse>() {
             @Override
-            public void onChanged(UploadCoverPhotoResponse uploadCoverPhotoResponse) {
+            public void onChanged(AddImageResponse uploadCoverPhotoResponse) {
                 if (uploadCoverPhotoResponse != null){
-                    if (!uploadCoverPhotoResponse.isSuccess()){
-                        SessionManager.writeString(getActivity(), SessionManager.COVER_FILE_URL, uploadCoverPhotoResponse.getFileUrl());
+                    if (uploadCoverPhotoResponse.isSuccess()){
+                        SessionManager.writeString(getActivity(), SessionManager.COVER_FILE_URL, uploadCoverPhotoResponse.getData().getFileUrl());
 
-                        Log.e("RegisterUser", SessionManager.readString(getActivity(), SessionManager.REGISTER_AS, "*") + "\n" +
-                                SessionManager.readString(getActivity(), SessionManager.COMPANY_NAME, "*") + "\n" +
-                                SessionManager.readString(getActivity(), SessionManager.SELECTED_BUSINESSES_IDS, "*") + "\n" +
-                                SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, "*") + "\n" +
-                                SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, "*") + "\n" +
-                                SessionManager.readString(getActivity(), SessionManager.BASIC_REGISTER_ID, "*"));
+                        if (registerAsActivity.isAddNewCard()){
+                            if (new Gson().fromJson(SessionManager.readSelectedCardData(getActivity(), SessionManager.Selected_Card_Data, ""), CardData.class).getQrCode() != null) {
+                                qrCode = new Gson().fromJson(SessionManager.readSelectedCardData(getActivity(), SessionManager.Selected_Card_Data, ""), CardData.class).getQrCode();
+                            }
+                            isPrivate = new Gson().fromJson(SessionManager.readSelectedCardData(getActivity(), SessionManager.Selected_Card_Data, ""), CardData.class).isPrivate();
+                            isDirect = new Gson().fromJson(SessionManager.readSelectedCardData(getActivity(), SessionManager.Selected_Card_Data, ""), CardData.class).isDirect();
 
-                        ParamFullRegister paramFullRegister = new ParamFullRegister(false, SessionManager.readString(getActivity(), SessionManager.COMPANY_NAME, ""),
-                                "","", SessionManager.readString(getActivity(), SessionManager.SELECTED_BUSINESSES_IDS, ""),
-                                SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, ""),
-                                SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, ""),
-                                0, SessionManager.readString(getActivity(), SessionManager.BASIC_REGISTER_ID, ""));
+                            ParamInsertCard paramInsertCard = new ParamInsertCard(SessionManager.readString(getActivity(), SessionManager.parentUserID, ""),false,
+                                    SessionManager.readString(getActivity(), SessionManager.COMPANY_NAME, ""),
+                                    SessionManager.readString(getActivity(), SessionManager.DOB, ""),
+                                    SessionManager.readString(getActivity(), SessionManager.GENDER, ""),
+                                    0, SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, ""),
+                                    SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, ""),
+                                    0,qrCode, SessionManager.readString(getActivity(), SessionManager.COUNTRY_NAME, ""),
+                                    SessionManager.readString(getActivity(), SessionManager.CITY, ""),
+                                    isPrivate, isDirect, SessionManager.readString(getActivity(), SessionManager.FULL_NAME, ""),"","",true);
 
-                        fragment4ViewModel.fullRegistration(paramFullRegister);
+                            fragment4ViewModel.insertCard(paramInsertCard, getActivity());
+                        }else {
+                            ParamFullRegister paramFullRegister = new ParamFullRegister(SessionManager.readString(getActivity(), SessionManager.BR_basicRegistratinUID, ""),
+                                    false, SessionManager.readString(getActivity(), SessionManager.COMPANY_NAME, ""),
+                                    SessionManager.readString(getActivity(), SessionManager.DOB, ""),
+                                    SessionManager.readString(getActivity(), SessionManager.GENDER, ""),
+                                    "0", SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, ""),
+                                    SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, ""),
+                                    SessionManager.readString(getActivity(), SessionManager.CITY, ""),
+                                    SessionManager.readString(getActivity(), SessionManager.COUNTRY_NAME, ""), 0);
+
+                            fragment4ViewModel.fullRegistration(paramFullRegister, getActivity());
+                        }
                     }
                 }
             }
@@ -141,12 +193,56 @@ public class IndividualFragment3 extends Fragment implements BusinessFragment4Na
                 if (fullRegisterResponse != null) {
                     if (fullRegisterResponse.isSuccess()) {
                         Toast.makeText(getActivity(), fullRegisterResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getActivity(), DashboardActivity.class));
+                        SessionManager.saveFullRegisterData(getActivity(), SessionManager.FR_FullRegisterData, fullRegisterResponse.getFullRegisterData());
+                        SessionManager.writeString(getActivity(), SessionManager.FR_userID, fullRegisterResponse.getFullRegisterData().getUserID());
+                        SessionManager.writeString(getActivity(), SessionManager.parentUserID, fullRegisterResponse.getFullRegisterData().getParentUserID());
+                        SessionManager.saveSelectedCardData(getActivity(), SessionManager.Selected_Card_Data, new Gson().toJson(fullRegisterResponse.getFullRegisterData()));
+                        SessionManager.saveAutoLogin(getActivity(), true);
+
+                        if(null != SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, "") && !SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, "").isEmpty()){
+                            File file = new File(SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, ""));
+                            file.delete();
+                            SessionManager.writeString(getActivity(), SessionManager.LOGO_FILE_URL, "");
+                        }
+
+                        if(null != SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, "") && !SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, "").isEmpty()){
+                            File file = new File(SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, ""));
+                            file.delete();
+                            SessionManager.writeString(getActivity(), SessionManager.COVER_FILE_URL, "");
+                        }
+
+                        startActivity(new Intent(getActivity(), DashboardActivity.class).putExtra("ISFromConnection", false).putExtra("NfcData", "").putExtra("IsFromSettings", false));
                         getActivity().finish();
                     }else {
                         Toast.makeText(getActivity(), fullRegisterResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    }
+                }
+            }
+        });
+
+        fragment4ViewModel.onInsertCard().observe(getViewLifecycleOwner(), new Observer<InsertCardResponse>() {
+            @Override
+            public void onChanged(InsertCardResponse insertCardResponse) {
+                if (insertCardResponse != null){
+                    if (insertCardResponse.isSuccess()){
+                        Toast.makeText(getActivity(), insertCardResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        if(null != SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, "") && !SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, "").isEmpty()){
+                            File file = new File(SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, ""));
+                            file.delete();
+                            SessionManager.writeString(getActivity(), SessionManager.LOGO_FILE_URL, "");
+                        }
+
+                        if(null != SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, "") && !SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, "").isEmpty()){
+                            File file = new File(SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, ""));
+                            file.delete();
+                            SessionManager.writeString(getActivity(), SessionManager.COVER_FILE_URL, "");
+                        }
+
+                        startActivity(new Intent(getActivity(), DashboardActivity.class).putExtra("ISFromConnection", false).putExtra("NfcData", "").putExtra("IsFromSettings", false));
                         getActivity().finish();
+                    }else {
+                        Toast.makeText(getActivity(), insertCardResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -270,7 +366,7 @@ public class IndividualFragment3 extends Fragment implements BusinessFragment4Na
     private void saveToFile(Bitmap bitmapImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        Uri path = Uri.parse(MediaStore.Images.Media.insertImage(getContext().getContentResolver(), bitmapImage, "Title", null));
+        Uri path = Uri.parse(MediaStore.Images.Media.insertImage(getContext().getContentResolver(), bitmapImage, "Title_"+new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date()), null));
         String[] projection = new String[]{"_data"};
         ContentResolver cr = getActivity().getContentResolver();
         Cursor metaCursor = cr.query(path, projection, null, null, null);
@@ -331,37 +427,59 @@ public class IndividualFragment3 extends Fragment implements BusinessFragment4Na
     public void uploadCoverPhoto() {
         isLogoImg = false;
         givePermission();
-        fragmentIndividual3Binding.tvUploadImgText.setVisibility(View.GONE);
     }
 
     @Override
     public void onFinish() {
         Log.e("Fragment3Data", SessionManager.readString(getActivity(), SessionManager.COMPANY_NAME, "*") +
                 "\n" + SessionManager.readString(getActivity(), SessionManager.FULL_NAME, "*") + "\n" +
-                SessionManager.readString(getActivity(), SessionManager.COUNTRY_NAME,"*"));
+                SessionManager.readString(getActivity(), SessionManager.COUNTRY_NAME,"*") + "\n" +
+                SessionManager.readString(getActivity(), SessionManager.BR_basicRegistratinUID, ""));
         if (selectedLogoImgPath.length() == 0){
             Toast.makeText(getActivity(), "Please Upload Profile Image", Toast.LENGTH_SHORT).show();
-        }else if (selectedCoverImgPath.length() == 0){
-            Toast.makeText(getActivity(), "Please Upload Cover Image", Toast.LENGTH_SHORT).show();
         }else {
-            if (selectedLogoImgFile.exists() && !SessionManager.readString(getActivity(), SessionManager.BASIC_REGISTER_ID, "").equals("")){
+            if (selectedLogoImgFile.exists() && !SessionManager.readString(getActivity(), SessionManager.BR_basicRegistratinUID, "").equals("")){
                 RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), selectedLogoImgFile);
-                MultipartBody.Part body = MultipartBody.Part.createFormData("Profile", selectedLogoImgFile.getName(), requestFile);
-                RequestBody userId = RequestBody.create(MediaType.parse("multipart/form-data"), SessionManager.readString(getActivity(), SessionManager.BASIC_REGISTER_ID, ""));
+                MultipartBody.Part body = MultipartBody.Part.createFormData("Image", selectedLogoImgFile.getName(), requestFile);
+                RequestBody userId = RequestBody.create(MediaType.parse("multipart/form-data"), SessionManager.readString(getActivity(), SessionManager.BR_basicRegistratinUID, ""));
 
-                fragment4ViewModel.addLogo(body, userId);
+                fragment4ViewModel.addLogo(body, userId, getActivity());
             }
         }
     }
 
     @Override
     public void onSkipNow() {
-        ParamFullRegister paramFullRegister = new ParamFullRegister(false, SessionManager.readString(getActivity(), SessionManager.COMPANY_NAME, ""),
-                "","", SessionManager.readString(getActivity(), SessionManager.SELECTED_BUSINESSES_IDS, ""),
-                SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, ""),
-                SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, ""),
-                0, SessionManager.readString(getActivity(), SessionManager.BASIC_REGISTER_ID, ""));
+        if (registerAsActivity.isAddNewCard()){
+            if (new Gson().fromJson(SessionManager.readSelectedCardData(getActivity(), SessionManager.Selected_Card_Data, ""), CardData.class).getQrCode() != null) {
+                qrCode = new Gson().fromJson(SessionManager.readSelectedCardData(getActivity(), SessionManager.Selected_Card_Data, ""), CardData.class).getQrCode();
+            }
+            isPrivate = new Gson().fromJson(SessionManager.readSelectedCardData(getActivity(), SessionManager.Selected_Card_Data, ""), CardData.class).isPrivate();
+            isDirect = new Gson().fromJson(SessionManager.readSelectedCardData(getActivity(), SessionManager.Selected_Card_Data, ""), CardData.class).isDirect();
 
-        fragment4ViewModel.fullRegistration(paramFullRegister);
+            ParamInsertCard paramInsertCard = new ParamInsertCard(SessionManager.readString(getActivity(), SessionManager.parentUserID, ""),false,
+                    SessionManager.readString(getActivity(), SessionManager.COMPANY_NAME, ""),
+                    SessionManager.readString(getActivity(), SessionManager.DOB, ""),
+                    SessionManager.readString(getActivity(), SessionManager.GENDER, ""),
+                    0, SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, ""),
+                    SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, ""),
+                    0,qrCode, SessionManager.readString(getActivity(), SessionManager.COUNTRY_NAME, ""),
+                    SessionManager.readString(getActivity(), SessionManager.CITY, ""),
+                    isPrivate, isDirect, SessionManager.readString(getActivity(), SessionManager.FULL_NAME, ""),"","",true);
+
+            fragment4ViewModel.insertCard(paramInsertCard, getActivity());
+        }else {
+            ParamFullRegister paramFullRegister = new ParamFullRegister(SessionManager.readString(getActivity(), SessionManager.BR_basicRegistratinUID, ""),
+                    false, SessionManager.readString(getActivity(), SessionManager.COMPANY_NAME, ""),
+                    SessionManager.readString(getActivity(), SessionManager.DOB, ""),
+                    SessionManager.readString(getActivity(), SessionManager.GENDER, ""),
+                    "0", SessionManager.readString(getActivity(), SessionManager.LOGO_FILE_URL, ""),
+                    SessionManager.readString(getActivity(), SessionManager.COVER_FILE_URL, ""),
+                    SessionManager.readString(getActivity(), SessionManager.CITY, ""),
+                    SessionManager.readString(getActivity(), SessionManager.COUNTRY_NAME, ""),
+                    0);
+
+            fragment4ViewModel.fullRegistration(paramFullRegister, getActivity());
+        }
     }
 }

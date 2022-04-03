@@ -1,14 +1,366 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".fragments.settingfragment.SettingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.fragments.settingfragment.SettingViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:onClick="@{() -> viewModel.onAccountClick()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0">
+
+            <ImageView
+                android:id="@+id/ivAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_account"
+                app:tint="?attr/icon_color" />
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="25dp"
+                android:layout_toEndOf="@id/ivAccount"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawableTint="?attr/icon_color"
+                android:text="Account"
+                android:textColor="?attr/text_color"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rPrivacy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:onClick="@{() -> viewModel.onPrivacySecurityClick()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rAccount"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/ivPrivacy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_shield"
+                android:layout_centerVertical="true"
+                app:tint="?attr/icon_color" />
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Privacy &amp; Security"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:layout_toEndOf="@id/ivPrivacy"
+                android:layout_marginStart="25dp"
+                android:layout_centerVertical="true"
+                android:drawableTint="?attr/icon_color"
+                android:textColor="?attr/text_color"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rShop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:onClick="@{() -> viewModel.onShopClick()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rPrivacy"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/ivCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_cart"
+                android:layout_centerVertical="true"
+                app:tint="?attr/icon_color" />
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="25dp"
+                android:layout_toEndOf="@id/ivCart"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawableTint="?attr/icon_color"
+                android:text="Shop"
+                android:textColor="?attr/text_color"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:onClick="@{() -> viewModel.onActivateProductClick()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rShop"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/ivKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_key"
+                android:layout_centerVertical="true"
+                app:tint="?attr/icon_color" />
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Activate Product"
+                android:layout_toEndOf="@id/ivKey"
+                android:layout_marginStart="25dp"
+                android:layout_centerVertical="true"
+                android:textColor="?attr/text_color"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rUse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:onClick="@{() -> viewModel.onHowToUseClick()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rProduct"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/ivTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_tv"
+                android:layout_centerVertical="true"
+                app:tint="?attr/icon_color" />
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="How to use"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:layout_toEndOf="@id/ivTv"
+                android:layout_marginStart="25dp"
+                android:layout_centerVertical="true"
+                android:drawableTint="?attr/icon_color"
+                android:textColor="?attr/text_color"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rUse"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/ivColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_color_palet"
+                android:layout_centerVertical="true"
+                app:tint="?attr/icon_color" />
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/dayNightSwitch"
+                android:layout_toEndOf="@id/ivColor"
+                android:text="Light/Dark theme"
+                android:textColor="?attr/text_color"
+                />
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/dayNightSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                app:sb_border_width="2dp"
+                app:sb_checked_color="@color/orange"
+                app:sb_show_indicator="false"
+                app:sb_uncheck_color="?attr/switch_unchecked" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rMemberShip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rTheme"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/ivPro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_crown_pro"
+                android:layout_centerVertical="true"
+                app:tint="?attr/icon_color" />
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Membership"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@id/ivPro"
+                android:layout_marginStart="25dp"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/switch_button_pro"
+                android:textColor="?attr/text_color"/>
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/switch_button_pro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                app:sb_border_width="2dp"
+                app:sb_checked_color="@color/orange"
+                app:sb_show_indicator="false"
+                app:sb_uncheck_color="?attr/switch_unchecked" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rSupport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:onClick="@{() -> viewModel.onSupportClick()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rMemberShip"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/ivSupport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_support"
+                android:layout_centerVertical="true"
+                app:tint="?attr/icon_color" />
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Support"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:layout_toEndOf="@id/ivSupport"
+                android:layout_marginStart="25dp"
+                android:layout_centerVertical="true"
+                android:drawableTint="?attr/icon_color"
+                android:textColor="?attr/text_color"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:onClick="@{() -> viewModel.onLogoutClick()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rSupport"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/ivLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_logout"
+                app:tint="?attr/icon_color" />
+
+            <com.example.synqit.customeviews.TextViewSemiBold
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:layout_toEndOf="@id/ivLogout"
+                android:layout_marginStart="25dp"
+                android:layout_centerVertical="true"
+                android:textColor="?attr/text_color"/>
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    </FrameLayout>
+</layout>

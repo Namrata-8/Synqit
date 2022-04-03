@@ -9,8 +9,9 @@
 
     <LinearLayout
         android:id="@+id/header_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.7"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -20,19 +21,9 @@
         android:layout_marginBottom="300dp">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/logo"/>
-
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SYNQIT"
-            android:layout_marginLeft="15dp"
-            android:textStyle="bold"
-            android:textSize="40sp"
-            android:textColor="@color/black"
-            />
+            android:src="@drawable/ic_synqit_color_logo"/>
 
     </LinearLayout>
 

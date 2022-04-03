@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.example.synqit.ui.dashboard.DashboardViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/ivSocialSite"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_facebook" />
+
+                <com.example.synqit.customeviews.TextViewSemiBold
+                    android:id="@+id/tvProBusiness"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_above="@id/cardBusiness"
+                    android:layout_alignEnd="@+id/cardBusiness"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="?attr/text_color"
+                    android:elevation="12.1dp"
+                    android:gravity="center"
+                    android:text="Pro"
+                    android:textColor="?attr/btn_text_color"
+                    android:textSize="8sp"
+                    android:visibility="gone"
+                    app:layout_anchor="@id/ivSocialSite"
+                    app:layout_anchorGravity="end|bottom" />
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

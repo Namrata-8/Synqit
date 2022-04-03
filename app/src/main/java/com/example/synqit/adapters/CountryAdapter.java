@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -21,10 +23,11 @@ import com.example.synqit.fragments.businessfragment3.BusinessFragment3ViewModel
 import java.util.ArrayList;
 import java.util.List;
 
-public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.countryViewHolder> {
+public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.countryViewHolder> implements Filterable {
 
     private Context context;
     private ArrayList<BusinessFragment3ViewModel> arrayList;
+    private final ArrayList<BusinessFragment3ViewModel> backup;
     private LayoutInflater layoutInflater;
     private OnItemClickListener mListener;
 
@@ -35,6 +38,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.countryV
     public CountryAdapter(Context context, ArrayList<BusinessFragment3ViewModel> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
+        backup = new ArrayList<>(arrayList);
     }
 
     @NonNull
@@ -98,4 +102,36 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.countryV
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence keyword) {
+            ArrayList<BusinessFragment3ViewModel> filteredData = new ArrayList<>();
+            if (keyword.toString().isEmpty()){
+                filteredData.addAll(backup);
+            }else {
+                for (BusinessFragment3ViewModel obj : backup){
+                    if (obj.getCountryName().toLowerCase().contains(keyword.toString().toLowerCase()))
+                        filteredData.add(obj);
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredData;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            arrayList.clear();
+            arrayList.addAll((ArrayList<BusinessFragment3ViewModel>)results.values);
+            notifyDataSetChanged();
+        }
+    };
 }

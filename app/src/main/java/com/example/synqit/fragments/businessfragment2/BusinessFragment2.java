@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.synqit.R;
 import com.example.synqit.adapters.BusinessAdapter;
 import com.example.synqit.databinding.FragmentBusiness2Binding;
-import com.example.synqit.models.Businesses;
 import com.example.synqit.ui.RegisterAsActivity;
 import com.example.synqit.utils.SessionManager;
 import com.google.android.material.button.MaterialButton;
@@ -37,7 +36,8 @@ public class BusinessFragment2 extends Fragment implements BusinessFragment2Navi
     private BusinessFragment2ViewModel fragment2ViewModel;
     private RegisterAsActivity registerAsActivity;
 
-    private ArrayList<String> selectedBusinessID = new ArrayList<>();
+    //private ArrayList<String> selectedBusinessID = new ArrayList<>();
+    private String selectedBusinessID = "0";
     private Gson gson = new Gson();
 
     @Override
@@ -54,7 +54,7 @@ public class BusinessFragment2 extends Fragment implements BusinessFragment2Navi
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         fragmentBusiness2Binding.rvBusiness.setLayoutManager(gridLayoutManager);
 
-        fragment2ViewModel.getBusinessesData().observe(getViewLifecycleOwner(), new Observer<ArrayList<BusinessFragment2ViewModel>>() {
+        fragment2ViewModel.getBusinessesData(getActivity()).observe(getViewLifecycleOwner(), new Observer<ArrayList<BusinessFragment2ViewModel>>() {
             @Override
             public void onChanged(ArrayList<BusinessFragment2ViewModel> businessFragment2ViewModels) {
                 businessAdapter = new BusinessAdapter(getActivity(),businessFragment2ViewModels);
@@ -63,13 +63,9 @@ public class BusinessFragment2 extends Fragment implements BusinessFragment2Navi
                 businessAdapter.setOnItemClickListener(new BusinessAdapter.OnItemClickListener() {
                     @Override
                     public void onItemAddClick(int position) {
-                        selectedBusinessID.add(businessFragment2ViewModels.get(position).id);
+                        selectedBusinessID = businessFragment2ViewModels.get(position).id;
                     }
 
-                    @Override
-                    public void onItemRemoveClick(int position) {
-                        selectedBusinessID.remove(businessFragment2ViewModels.get(position).id);
-                    }
                 });
             }
         });
@@ -80,12 +76,11 @@ public class BusinessFragment2 extends Fragment implements BusinessFragment2Navi
     @Override
     public void onContinueClick() {
         if (registerAsActivity != null) {
-            if (selectedBusinessID.isEmpty()){
+            if (selectedBusinessID.equals("")){
                 Toast.makeText(getActivity(), "Please Select business", Toast.LENGTH_SHORT).show();
             }else {
-                String selectedBusiness = gson.toJson(selectedBusinessID);
-                SessionManager.writeString(getActivity(), SessionManager.SELECTED_BUSINESSES_IDS, selectedBusiness);
-                Log.e("selectedBusiness", selectedBusiness);
+                //String selectedBusiness = gson.toJson(selectedBusinessID);
+                SessionManager.writeString(getActivity(), SessionManager.SELECTED_BUSINESSES_IDS, selectedBusinessID);
                 registerAsActivity.setPagerFragment(2);
             }
         }

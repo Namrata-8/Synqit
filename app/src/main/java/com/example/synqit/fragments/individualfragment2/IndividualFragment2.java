@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,11 +41,13 @@ public class IndividualFragment2 extends Fragment implements Individual2Navigato
     private FragmentIndividual2Binding fragmentIndividual2Binding;
     private Individual2ViewModel individual2ViewModel;
     private RegisterAsActivity registerAsActivity;
+    private CountryAdapter countryAdapter;
     private String companyName = "";
     private String fullName = "";
     private String countryName = "";
     private String gender = "";
     private String date = "";
+    private String city = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,6 +69,7 @@ public class IndividualFragment2 extends Fragment implements Individual2Navigato
             companyName = fragmentIndividual2Binding.etCompName.getText().toString();
             fullName = fragmentIndividual2Binding.etFullName.getText().toString();
             date = fragmentIndividual2Binding.etDob.getText().toString();
+            city = fragmentIndividual2Binding.etCity.getText().toString();
             countryName = fragmentIndividual2Binding.etCountry.getText().toString();
             gender = fragmentIndividual2Binding.etGender.getText().toString();
 
@@ -76,6 +81,9 @@ public class IndividualFragment2 extends Fragment implements Individual2Navigato
                 fragmentIndividual2Binding.etFullName.requestFocus();
             }else if (fragmentIndividual2Binding.etDob.getText().toString().length() == 0){
                 Toast.makeText(getActivity(), "Please Select Dob", Toast.LENGTH_SHORT).show();
+            }else if (fragmentIndividual2Binding.etCity.getText().toString().length() == 0){
+                fragmentIndividual2Binding.etCity.setError(getString(R.string.error_city_name));
+                fragmentIndividual2Binding.etCity.requestFocus();
             }else if (fragmentIndividual2Binding.etCountry.getText().toString().length() == 0){
                 Toast.makeText(getActivity(), "Please Select Country", Toast.LENGTH_SHORT).show();
             }else if (fragmentIndividual2Binding.etGender.getText().toString().length() == 0){
@@ -84,6 +92,7 @@ public class IndividualFragment2 extends Fragment implements Individual2Navigato
                 SessionManager.writeString(getActivity(), SessionManager.COMPANY_NAME, companyName);
                 SessionManager.writeString(getActivity(), SessionManager.FULL_NAME, fullName);
                 SessionManager.writeString(getActivity(), SessionManager.DOB, date);
+                SessionManager.writeString(getActivity(), SessionManager.CITY, city);
                 SessionManager.writeString(getActivity(), SessionManager.COUNTRY_NAME, countryName);
                 SessionManager.writeString(getActivity(), SessionManager.GENDER, gender);
 
@@ -107,7 +116,7 @@ public class IndividualFragment2 extends Fragment implements Individual2Navigato
         Calendar cal = Calendar.getInstance();
 
         DatePickerDialog dpd = new DatePickerDialog(getActivity(), (view1, year, month, dayOfMonth) -> {
-            fragmentIndividual2Binding.etDob.setText( String.format("%02d", dayOfMonth) + "-" + String.format("%02d", month + 1) + "-"  + String.format("%d", year));
+            fragmentIndividual2Binding.etDob.setText( String.format("%02d", dayOfMonth) + "/" + String.format("%02d", month + 1) + "/"  + String.format("%d", year));
         }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
         dpd.show();
     }
@@ -161,7 +170,7 @@ public class IndividualFragment2 extends Fragment implements Individual2Navigato
         individual2ViewModel.getCountryList(countryList).observe(getViewLifecycleOwner(), new Observer<ArrayList<BusinessFragment3ViewModel>>() {
             @Override
             public void onChanged(ArrayList<BusinessFragment3ViewModel> businessFragment3ViewModels) {
-                CountryAdapter countryAdapter = new CountryAdapter(getActivity(), businessFragment3ViewModels);
+                countryAdapter = new CountryAdapter(getActivity(), businessFragment3ViewModels);
                 rvCountry.setAdapter(countryAdapter);
 
                 countryAdapter.setOnItemClickListener(new CountryAdapter.OnItemClickListener() {
@@ -171,6 +180,23 @@ public class IndividualFragment2 extends Fragment implements Individual2Navigato
                         dialog.dismiss();
                     }
                 });
+            }
+        });
+
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                countryAdapter.getFilter().filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 

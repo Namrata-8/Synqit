@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.howtouse.HowToUseActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.ui.howtouse.HowToUseViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/main_background">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="15dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_arrow_left"
+                app:tint="?attr/icon_color" />
+
+            <RelativeLayout
+                android:id="@+id/rlLiveChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/btnBack"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="25dp">
+
+                <com.example.synqit.customeviews.TextViewRegular
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Live chat"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="12dp"
+                    android:textColor="?attr/text_color"
+                    android:layout_toStartOf="@id/ivSupport"/>
+
+                <ImageButton
+                    android:id="@+id/ivSupport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/circle"
+                    android:src="@drawable/ic_support"
+                    android:layout_alignParentEnd="true"
+                    android:backgroundTint="@color/orange"
+                    app:tint="@color/white"
+                    android:padding="10dp"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <com.example.synqit.customeviews.TextViewBold
+            android:id="@+id/textViewSemiBold11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="How to use"
+            android:textColor="?attr/text_color"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            app:layout_constraintVertical_bias="0" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHowToUse"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:layout_marginTop="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/row_how_to_use"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSemiBold11"
+            app:layout_constraintVertical_bias="0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

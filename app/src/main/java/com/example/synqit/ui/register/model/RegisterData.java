@@ -3,7 +3,7 @@ package com.example.synqit.ui.register.model;
 import com.google.gson.annotations.SerializedName;
 
 public class RegisterData {
-    @SerializedName("id")
+    @SerializedName("basicRegistratinUID")
     private String id;
     @SerializedName("email")
     private String email;

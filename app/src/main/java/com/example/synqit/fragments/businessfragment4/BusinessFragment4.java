@@ -32,8 +32,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.synqit.R;
 import com.example.synqit.databinding.FragmentBusiness4Binding;
-import com.example.synqit.fragments.businessfragment4.model.AddLogoResponse;
-import com.example.synqit.fragments.businessfragment4.model.UploadCoverPhotoResponse;
+import com.example.synqit.fragments.businessfragment4.model.AddImageResponse;
+import com.example.synqit.fragments.businessfragment4.model.InsertCardResponse;
+import com.example.synqit.fragments.businessfragment4.model.ParamInsertCard;
+import com.example.synqit.ui.RegisterAsActivity;
+import com.example.synqit.ui.dashboard.DashboardActivity;
 import com.example.synqit.ui.proupgrade.ProUpgradeActivity;
 import com.example.synqit.utils.SessionManager;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -41,7 +44,6 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -63,6 +65,7 @@ public class BusinessFragment4 extends Fragment implements BusinessFragment4Navi
     private String selectedCoverImgPath = "";
     private File selectedLogoImgFile;
     private File selectedCoverImgFile;
+    private RegisterAsActivity registerAsActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,6 +73,7 @@ public class BusinessFragment4 extends Fragment implements BusinessFragment4Navi
         fragmentBusiness4Binding = DataBindingUtil.inflate(inflater, R.layout.fragment_business4, container, false);
         fragmentBusiness4Binding.setViewModel(new BusinessFragment4ViewModel(this));
         fragmentBusiness4Binding.executePendingBindings();
+        registerAsActivity = (RegisterAsActivity) getActivity();
         initViewModel();
 
         return fragmentBusiness4Binding.getRoot();
@@ -78,32 +82,43 @@ public class BusinessFragment4 extends Fragment implements BusinessFragment4Navi
     private void initViewModel() {
         fragment4ViewModel = new ViewModelProvider(this).get(BusinessFragment4ViewModel.class);
 
-        fragment4ViewModel.addLogoApi().observe(getViewLifecycleOwner(), new Observer<AddLogoResponse>() {
+        fragment4ViewModel.addLogoApi().observe(getViewLifecycleOwner(), new Observer<AddImageResponse>() {
             @Override
-            public void onChanged(AddLogoResponse addLogoResponse) {
-                if (addLogoResponse != null){
-                    if (!addLogoResponse.isSuccess()){
-                        SessionManager.writeString(getActivity(), SessionManager.LOGO_FILE_URL, addLogoResponse.getFileUrl());
-                        if (selectedCoverImgFile.exists() && !SessionManager.readString(getActivity(), SessionManager.BASIC_REGISTER_ID, "").equals("")){
-                            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), selectedCoverImgFile);
-                            MultipartBody.Part body = MultipartBody.Part.createFormData("Cover", selectedCoverImgFile.getName(), requestFile);
-                            RequestBody userId = RequestBody.create(MediaType.parse("multipart/form-data"), SessionManager.readString(getActivity(), SessionManager.BASIC_REGISTER_ID, ""));
+            public void onChanged(AddImageResponse addImageResponse) {
+                if (addImageResponse != null){
+                    if (addImageResponse.isSuccess()){
+                        SessionManager.writeString(getActivity(), SessionManager.LOGO_FILE_URL, addImageResponse.getData().getFileUrl());
+                        if (selectedCoverImgPath.length() != 0) {
+                            if (selectedCoverImgFile.exists() && !SessionManager.readString(getActivity(), SessionManager.BR_basicRegistratinUID, "").equals("")) {
+                                RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), selectedCoverImgFile);
+                                MultipartBody.Part body = MultipartBody.Part.createFormData("image", selectedCoverImgFile.getName(), requestFile);
+                                RequestBody userId = RequestBody.create(MediaType.parse("multipart/form-data"), SessionManager.readString(getActivity(), SessionManager.BR_basicRegistratinUID, ""));
 
-                            fragment4ViewModel.uploadCoverPhoto(body, userId);
+                                fragment4ViewModel.uploadCoverPhoto(body, userId, getActivity());
+                            }
+                        }else {
+                            if (registerAsActivity != null) {
+                                startActivity(new Intent(getActivity(), ProUpgradeActivity.class).putExtra("AddNewCard",registerAsActivity.isAddNewCard()).putExtra("ISFromSplash", false).putExtra("ISFromScan", false));
+                            }
                         }
+                    }else {
+                        Toast.makeText(getActivity(), addImageResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         });
 
-        fragment4ViewModel.uploadCoverPhotoApi().observe(getViewLifecycleOwner(), new Observer<UploadCoverPhotoResponse>() {
+        fragment4ViewModel.uploadCoverPhotoApi().observe(getViewLifecycleOwner(), new Observer<AddImageResponse>() {
             @Override
-            public void onChanged(UploadCoverPhotoResponse uploadCoverPhotoResponse) {
+            public void onChanged(AddImageResponse uploadCoverPhotoResponse) {
                 if (uploadCoverPhotoResponse != null){
-                    if (!uploadCoverPhotoResponse.isSuccess()){
-                        SessionManager.writeString(getActivity(), SessionManager.COVER_FILE_URL, uploadCoverPhotoResponse.getFileUrl());
-
-                        startActivity(new Intent(getActivity(), ProUpgradeActivity.class));
+                    if (uploadCoverPhotoResponse.isSuccess()){
+                        SessionManager.writeString(getActivity(), SessionManager.COVER_FILE_URL, uploadCoverPhotoResponse.getData().getFileUrl());
+                        if (registerAsActivity != null) {
+                            startActivity(new Intent(getActivity(), ProUpgradeActivity.class).putExtra("AddNewCard",registerAsActivity.isAddNewCard()).putExtra("ISFromSplash", false).putExtra("ISFromScan", false));
+                        }
+                    }else {
+                        Toast.makeText(getActivity(), uploadCoverPhotoResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -172,6 +187,7 @@ public class BusinessFragment4 extends Fragment implements BusinessFragment4Navi
                     }else {
                         fragmentBusiness4Binding.ivUploadCoverPhoto.setImageBitmap(bitmapImage);
                     }
+                    Log.e("Bitmap", bitmapImage + "");
                     saveToFile(bitmapImage);
                 }
                 break;
@@ -228,7 +244,7 @@ public class BusinessFragment4 extends Fragment implements BusinessFragment4Navi
     private void saveToFile(Bitmap bitmapImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        Uri path = Uri.parse(MediaStore.Images.Media.insertImage(getContext().getContentResolver(), bitmapImage, "Title", null));
+        Uri path = Uri.parse(MediaStore.Images.Media.insertImage(getContext().getContentResolver(), bitmapImage, "Title_"+new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date()), null));
         String[] projection = new String[]{"_data"};
         ContentResolver cr = getActivity().getContentResolver();
         Cursor metaCursor = cr.query(path, projection, null, null, null);
@@ -289,7 +305,6 @@ public class BusinessFragment4 extends Fragment implements BusinessFragment4Navi
     public void uploadCoverPhoto() {
         isLogoImg = false;
         givePermission();
-        fragmentBusiness4Binding.tvUploadImgText.setVisibility(View.GONE);
     }
 
     @Override
@@ -300,21 +315,18 @@ public class BusinessFragment4 extends Fragment implements BusinessFragment4Navi
                 SessionManager.readString(getActivity(), SessionManager.COUNTRY_NAME,"*"));
         if (selectedLogoImgPath.length() == 0){
             Toast.makeText(getActivity(), "Please Upload Profile Image", Toast.LENGTH_SHORT).show();
-        }else if (selectedCoverImgPath.length() == 0){
-            Toast.makeText(getActivity(), "Please Upload Cover Image", Toast.LENGTH_SHORT).show();
         }else {
-           if (selectedLogoImgFile.exists() && !SessionManager.readString(getActivity(), SessionManager.BASIC_REGISTER_ID, "").equals("")){
+           if (selectedLogoImgFile.exists() && !SessionManager.readString(getActivity(), SessionManager.BR_basicRegistratinUID, "").equals("")){
                RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), selectedLogoImgFile);
-               MultipartBody.Part body = MultipartBody.Part.createFormData("Profile", selectedLogoImgFile.getName(), requestFile);
-               RequestBody userId = RequestBody.create(MediaType.parse("multipart/form-data"), SessionManager.readString(getActivity(), SessionManager.BASIC_REGISTER_ID, ""));
-
-               fragment4ViewModel.addLogo(body, userId);
+               MultipartBody.Part body = MultipartBody.Part.createFormData("image", selectedLogoImgFile.getName(), requestFile);
+               RequestBody userId = RequestBody.create(MediaType.parse("multipart/form-data"), SessionManager.readString(getActivity(), SessionManager.BR_basicRegistratinUID, ""));
+               fragment4ViewModel.addLogo(body, userId, getActivity());
            }
         }
     }
 
     @Override
     public void onSkipNow() {
-        startActivity(new Intent(getActivity(), ProUpgradeActivity.class));
+        startActivity(new Intent(getActivity(), ProUpgradeActivity.class).putExtra("AddNewCard", registerAsActivity.isAddNewCard()).putExtra("ISFromSplash", false).putExtra("ISFromScan", false));
     }
 }

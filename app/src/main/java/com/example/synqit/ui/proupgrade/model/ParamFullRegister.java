@@ -9,10 +9,13 @@ public class ParamFullRegister {
     private String businessType;
     private String displayPicture;
     private String coverPicture;
+    private String city;
+    private String country;
     private int plan;
     private String basicRegistratinUID;
 
-    public ParamFullRegister(boolean isBusiness, String displayName, String dob, String gender, String businessType, String displayPicture, String coverPicture, int plan, String basicRegistratinUID) {
+    public ParamFullRegister(String basicRegistratinUID, boolean isBusiness, String displayName, String dob, String gender, String businessType, String displayPicture, String coverPicture, String city, String country, int plan) {
+        this.basicRegistratinUID = basicRegistratinUID;
         this.isBusiness = isBusiness;
         this.displayName = displayName;
         this.dob = dob;
@@ -20,8 +23,9 @@ public class ParamFullRegister {
         this.businessType = businessType;
         this.displayPicture = displayPicture;
         this.coverPicture = coverPicture;
+        this.city = city;
+        this.country = country;
         this.plan = plan;
-        this.basicRegistratinUID = basicRegistratinUID;
     }
 
     public void setBusiness(boolean business) {

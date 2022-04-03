@@ -16,7 +16,7 @@
         <!-- Customize your theme here. -->
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
 
-        <item name="main_background">@color/black</item>
+        <item name="main_background">#0A0400</item>
         <item name="bg_edittext">#00000000</item>
         <item name="bg_edittext_border">#4B4A51</item>
         <item name="text_color">@color/white</item>
@@ -60,6 +60,23 @@
         <item name="bg_tv_link">#18171D</item>
         <item name="row_link_border_unselected">#272727</item>
         <item name="row_link_border_selected">@color/orange</item>
+        <item name="bg_btn_link">#1AFFFFFF</item>
+
+        <item name="card_selected_x">#18171D</item>
+        <item name="card_selected_border_x">#24FFFFFF</item>
+        <item name="card_selected_y">#111014</item>
+        <item name="card_selected_border_y">#111014</item>
+
+        <item name="card_unselected_x">#FFFFFF</item>
+        <item name="card_unselected_border_x">#DBDBDB</item>
+        <item name="card_unselected_y">#F0F0F0</item>
+        <item name="card_unselected_border_y">#F0F0F0</item>
+        <item name="bg_et_bio_border">#18171D</item>
+        <item name="bg_et_bio">#18171D</item>
+        <item name="border_favorite">#373638</item>
+
+        <item name="bg_drawable_cover">@drawable/img_cover_night</item>
+        <item name="bg_drawable_cover_2">@drawable/img_cover_dark_2</item>
     </style>
 
     <style name="AppTheme_Crop" parent="Theme.MaterialComponents.DayNight.NoActionBar">

@@ -23,7 +23,7 @@
             android:id="@+id/textViewRegular"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="Please choose one of the following options that describes your business"
             android:textColor="?attr/text_color_light"
             app:layout_constraintBottom_toBottomOf="parent"

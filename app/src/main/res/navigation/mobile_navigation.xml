@@ -19,14 +19,20 @@
 
     <fragment
         android:id="@+id/navigation_graph"
-        android:name="com.example.synqit.fragments.graphfragment.GraphFragment"
+        android:name="com.example.synqit.fragments.insightfragment.InsightFragment"
         android:label="Graph"
-        tools:layout="@layout/fragment_graph" />
+        tools:layout="@layout/fragment_insight" />
 
     <fragment
         android:id="@+id/navigation_setting"
         android:name="com.example.synqit.fragments.settingfragment.SettingFragment"
         android:label="Setting"
         tools:layout="@layout/fragment_setting" />
+
+    <fragment
+        android:id="@+id/navigation_connect"
+        android:name="com.example.synqit.fragments.connectionsfragment.ConnectionsFragment"
+        android:label="Setting"
+        tools:layout="@layout/fragment_connections" />
 
 </navigation>

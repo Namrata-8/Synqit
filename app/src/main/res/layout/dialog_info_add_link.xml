@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_qr_code"
+        app:layout_constraintWidth_percent="0.85"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="?attr/bg_card">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
+
+            <com.example.synqit.customeviews.TextViewBold
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textColor="?attr/text_color" />
+
+        </RelativeLayout>
+
+        <com.example.synqit.customeviews.TextViewSemiBold
+            android:id="@+id/tvInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/info_text_add_link"
+            android:textColor="?attr/hint_text_color"
+            android:letterSpacing="0.01"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="15dp"
+            android:lineSpacingExtra="5dp"
+            android:textSize="13sp"
+            android:layout_marginHorizontal="15dp"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout20" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDone"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginVertical="20dp"
+            android:backgroundTint="?attr/button_color"
+            android:text="Done"
+            android:textAllCaps="false"
+            android:textColor="?attr/btn_text_color"
+            app:cornerRadius="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvInfo"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent="0.75" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

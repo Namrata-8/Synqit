@@ -1,60 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.8"
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.synqit.ui.addlink.AddLinkViewModel" />
+
+    </data>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="13dp"
-        android:layout_margin="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:nestedScrollingEnabled="true"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:overScrollMode="never">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <ImageView
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView6"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            app:layout_constraintHorizontal_bias="0"
+            app:cardCornerRadius="13dp"
+            app:layout_constraintBottom_toBottomOf="@id/rvCategoryAppList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rvCategoryAppList"
+            app:layout_constraintWidth_percent="0.85">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:src="@drawable/demo2"
-                android:scaleType="fitXY"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="325dp"
+                    android:layout_height="150dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/demo2" />
 
-                <com.example.synqit.customeviews.TextViewBold
-                    android:id="@+id/tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Social Media"
-                    android:textColor="?attr/text_color"
-                    android:textSize="16sp" />
-
-                <com.example.synqit.customeviews.TextViewRegular
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Authoritatively initiate team building leadership skills with quality action items. Dynamically initiate tactical ideas rather than interdependent synergy. "
-                    android:textColor="?attr/text_color_light"
-                    android:textSize="14sp" />
+                    android:layout_height="150dp"
+                    android:layout_weight="1">
 
-            </RelativeLayout>
+                    <com.example.synqit.customeviews.TextViewBold
+                        android:id="@+id/tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="@{viewModel.categories.title}"
+                        android:textColor="?attr/text_color"
+                        android:textSize="16sp" />
 
-        </LinearLayout>
+                    <com.example.synqit.customeviews.TextViewRegular
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@{viewModel.categories.description}"
+                        android:textColor="?attr/text_color_light"
+                        android:textSize="14sp" />
 
-    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategoryAppList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/cardView6"
+            android:layout_marginVertical="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="12dp"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:orientation="horizontal"
+            app:spanCount="2"
+            tools:listitem="@layout/row_app_link"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </HorizontalScrollView>
+
+</layout>
